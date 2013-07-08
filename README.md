@@ -26,7 +26,7 @@ or, to resolve ID conflicts automatically
 
 #Building from source
 
-If you just want a stable build, grab the latest version from the [releases folder](https://github.com/SS111/Minecraft-ID-Resolver/tree/master/releases).
+If you just want a stable build, grab the latest version from the [releases page](https://github.com/SS111/Minecraft-ID-Resolver/releases).
 
 However, if you want the bleeding edge build first clone the repository. Then you are going to need to add [MiG Layout](http://www.miglayout.com/), [Apache Commons Collections](http://commons.apache.org/proper/commons-collections/), and [Appache Commons IO](http://commons.apache.org/proper/commons-io/) to the build path. Finally, make sure that the classpath is set to WindowMain and then compile.
 
