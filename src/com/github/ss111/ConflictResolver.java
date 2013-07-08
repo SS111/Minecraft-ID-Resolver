@@ -20,6 +20,15 @@ public class ConflictResolver {
 	
 		File configDirectory = new File(path);
 		
+		try {
+			
+			FileUtils.copyDirectory(configDirectory, new File(path.replace("config", "config_bak")));
+			
+		} catch (Exception e) {
+			
+			e.printStackTrace();
+		}
+		
 		File[] configFiles = configDirectory.listFiles();
 		
 		for (File configFile : configFiles) {
