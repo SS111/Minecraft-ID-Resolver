@@ -176,8 +176,8 @@ IdDumpHelper.populateUnusedIDs("/path/to/nei/id/dump/");
 You can get the unused block/item IDs by calling:
 
 ```java
-ArrayList myList = IdDumpHelper.getUnusedBlockIDs();
-ArrayList mySecondList = IdDumpHelper.getUnusedItemIDs();
+ArrayList<Integer> myList = IdDumpHelper.getUnusedBlockIDs();
+ArrayList<Integer> mySecondList = IdDumpHelper.getUnusedItemIDs();
 ```
 
 Finally, to resolve the conflicts you can simply do:
