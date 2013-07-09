@@ -24,6 +24,8 @@ or, to resolve ID conflicts automatically
  7. Click "Dump ID Map Now". This will dump the ID map to your .minecraft folder. Now just browse to the file when asked to provide a NEI ID dump.
 4. Allow the program to resolve conflicts automatically
 
+If for whatever reason your configuration is messed up afterwards, there will be a backup in your .minecraft directory named config_bak.
+
 #Building from source
 
 If you just want a stable build, grab the latest version from the [releases page](https://github.com/SS111/Minecraft-ID-Resolver/releases).
