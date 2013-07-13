@@ -66,7 +66,7 @@ public class WindowMain {
 		
 		frmMain = new JFrame();
 		frmMain.setResizable(false);
-		frmMain.setTitle("Minecraft ID Resolver V1.0.3 - By SS111");
+		frmMain.setTitle("Minecraft ID Resolver V1.0.3.2 - By SS111");
 		frmMain.setBounds(100, 100, 450, 345);
 		frmMain.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmMain.getContentPane().setLayout(new MigLayout("", "[95px][10px][210px,grow][10px][99px]", "[23px][23px][179px][][][]"));
