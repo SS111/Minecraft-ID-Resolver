@@ -7,6 +7,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
 public class IdDumpHelper {
 	
 	private static BufferedReader dumpReader;
@@ -79,6 +81,11 @@ public class IdDumpHelper {
 	}
 	
 	public static ArrayList<Integer> getUnusedItemIDs() {
+		
+		if (unusedItemIDs.size() == 0) {
+			
+			JOptionPane.showMessageDialog(null, "There are no unused item IDs. Are you sure you dumped them? The program cannot continue and will now close.", "Information", JOptionPane.ERROR_MESSAGE);
+		}
 		
 		return unusedItemIDs;
 	}

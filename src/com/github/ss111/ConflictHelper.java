@@ -3,8 +3,6 @@ package com.github.ss111;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import javax.swing.JOptionPane;
-
 import org.apache.commons.collections.map.MultiValueMap;
 
 public class ConflictHelper {
@@ -125,25 +123,11 @@ public class ConflictHelper {
 	
 	public static ArrayList<Integer> getConflictingBlocks() {
 		
-		if (conflictingBlocks.size() == 0) {
-			
-			JOptionPane.showMessageDialog(null, "There are no unused block IDs! Did you forget to dump them? The program cannot continue and will now close.", "Information", JOptionPane.ERROR_MESSAGE);
-			
-			WindowMain.frmMain.dispose();
-		}
-		
 		return conflictingBlocks;
 	}
 	
 	public static ArrayList<Integer> getConflictingItems() {
-		
-		if (conflictingItems.size() == 0) {
-			
-			JOptionPane.showMessageDialog(null, "There are no unused item IDs! Did you forget to dump them? The program cannot continue and will now close.", "Information", JOptionPane.ERROR_MESSAGE);
-			
-			WindowMain.frmMain.dispose();
-		}
-		
+				
 		return conflictingItems;
 	}
 }
