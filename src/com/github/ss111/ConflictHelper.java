@@ -43,6 +43,30 @@ public class ConflictHelper {
 		}
 	}
 	
+	public static Boolean isConflicting(MultiValueMap map, Integer key) {
+		
+		@SuppressWarnings("unchecked")
+		Collection<String> names = map.getCollection(key);
+	
+		if (names.size() == 1) {
+			
+			return false;
+			
+		} else {
+			
+			String[] namesArray = (String[]) names.toArray(new String[0]);
+			
+			if (namesArray[0].equals(namesArray[1])) {
+				
+				return false;
+				
+			} else {
+				
+				return true;
+			}
+		}
+	}
+	
 	public static String getName(MultiValueMap map, Integer key) {
 		
 		@SuppressWarnings("unchecked")
