@@ -158,7 +158,9 @@ for (Object key: myMap) {
 
 ID = Integer.valueOf(key.toString());
 
-if (ConflictHelper.isConflicting(myMap, ID, "BLOCK") == true) {
+if (ConflictHelper.isConflicting(myMap, ID) == true) {
+//Optionally, you can also pass the type parameter to automatically store conflicting items in an ArrayList
+//if (ConflictHelper.isConflicting(myMap, ID, "BLOCK") == true) {
 
          //Do some stuff here
 
@@ -167,7 +169,7 @@ if (ConflictHelper.isConflicting(myMap, ID, "BLOCK") == true) {
 }
 ```
 
-The above method will return true or false respectively. It is also very important to pass the type parameter (either BLOCK, ITEM, or UNKNOWN) because ConflictHelper will automatically store conflicting values in thier respective ArrayList. (i.e there is an ArrayList for conflicting blocks and for conflicting items).
+The above method will return true or false respectively. You can also optionally pass the type parameter (either BLOCK or ITEM) and ConflictHelper will store the conflicting IDs in thier respective ArrayList.
 
 If you want conflicts to automatically be resolved, we now need to populate more ArrayLists that will contain the unused block and item IDs. It's as simple as calling:
 
