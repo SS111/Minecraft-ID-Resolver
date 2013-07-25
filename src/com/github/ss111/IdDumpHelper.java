@@ -12,8 +12,8 @@ import javax.swing.JOptionPane;
 public class IdDumpHelper {
 	
 	private static BufferedReader dumpReader;
-	private static ArrayList<Integer> unusedBlockIDs = new ArrayList<Integer>(5000);
-	private static ArrayList<Integer> unusedItemIDs = new ArrayList<Integer>(5000);
+	private static ArrayList<Integer> unusedBlockIDs = new ArrayList<Integer>();
+	private static ArrayList<Integer> unusedItemIDs = new ArrayList<Integer>();
 	private static String dumpLine;
 	
 	public static void populateUnusedIDs(String path) {

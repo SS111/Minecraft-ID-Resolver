@@ -7,8 +7,8 @@ import org.apache.commons.collections.map.MultiValueMap;
 
 public class ConflictHelper {
 	
-	private static ArrayList<Integer> conflictingBlocks = new ArrayList<Integer>(1000);
-	private static ArrayList<Integer> conflictingItems = new ArrayList<Integer>(1000);
+	private static ArrayList<Integer> conflictingBlocks = new ArrayList<Integer>();
+	private static ArrayList<Integer> conflictingItems = new ArrayList<Integer>();
 	
 	public static Boolean isConflicting(MultiValueMap map, Integer key, String type) {
 		
