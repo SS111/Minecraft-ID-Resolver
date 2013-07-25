@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import org.apache.commons.collections.map.MultiValueMap;
 
@@ -69,14 +70,22 @@ public class ConfigHelper {
 							
 							String[] blockNameSplit = configLine.split("=");
 							
-							blockIDs.put(Integer.valueOf(configLine.substring(configLine.lastIndexOf("=") + 1)), blockNameSplit[0].replace("I:", "").replace(" ", "").replace("\"", ""));
+							ArrayList<String> blockAndConfig = new ArrayList<String>();
+							blockAndConfig.add(blockNameSplit[0].replace("I:", "").replace(" ", "").replace("\"", ""));
+							blockAndConfig.add(getPrettyName(configFile.getAbsolutePath()));
+							
+							blockIDs.put(Integer.valueOf(configLine.substring(configLine.lastIndexOf("=") + 1)), blockAndConfig);
 							continue;
 							
 						} else if (configLine.contains("I:") && itemComingUp == true) {
 							
 							String[] itemNameSplit = configLine.split("=");
 							
-							itemIDs.put(Integer.valueOf(configLine.substring(configLine.lastIndexOf("=") + 1)), itemNameSplit[0].replace("I:", "").replace(" ", "").replace("\"", ""));
+							ArrayList<String> itemAndConfig = new ArrayList<String>();
+							itemAndConfig.add(itemNameSplit[0].replace("I:", "").replace(" ", "").replace("\"", ""));
+							itemAndConfig.add(getPrettyName(configFile.getAbsolutePath()));
+							
+							itemIDs.put(Integer.valueOf(configLine.substring(configLine.lastIndexOf("=") + 1)), itemAndConfig);
 							continue;
 							
 							//& or &&?
@@ -86,7 +95,11 @@ public class ConfigHelper {
 								
 								String[] nameSplit = configLine.split("=");
 								
-								unknownIDs.put(Integer.valueOf(configLine.substring(configLine.lastIndexOf("=") + 1)), nameSplit[0].replace("I:", "").replace(" ", "").replace("\"", ""));
+								ArrayList<String> unknownAndConfig = new ArrayList<String>();
+								unknownAndConfig.add(nameSplit[0].replace("I:", "").replace(" ", "").replace("\"", ""));
+								unknownAndConfig.add(getPrettyName(configFile.getAbsolutePath()));
+								
+								unknownIDs.put(Integer.valueOf(configLine.substring(configLine.lastIndexOf("=") + 1)), unknownAndConfig);
 								continue;
 								
 							} else {
@@ -161,14 +174,22 @@ public class ConfigHelper {
 									
 									String[] blockNameSplit = configLine.split("=");
 									
-									blockIDs.put(Integer.valueOf(configLine.substring(configLine.lastIndexOf("=") + 1)), blockNameSplit[0].replace("I:", "").replace(" ", "").replace("\"", ""));
+									ArrayList<String> blockAndConfig = new ArrayList<String>();
+									blockAndConfig.add(blockNameSplit[0].replace("I:", "").replace(" ", "").replace("\"", ""));
+									blockAndConfig.add(getPrettyName(configFile.getAbsolutePath()));
+									
+									blockIDs.put(Integer.valueOf(configLine.substring(configLine.lastIndexOf("=") + 1)), blockAndConfig);
 									continue;
 									
 								} else if (configLine.contains("I:") && itemComingUp == true) {
 									
 									String[] itemNameSplit = configLine.split("=");
 									
-									itemIDs.put(Integer.valueOf(configLine.substring(configLine.lastIndexOf("=") + 1)), itemNameSplit[0].replace("I:", "").replace(" ", "").replace("\"", ""));
+									ArrayList<String> itemAndConfig = new ArrayList<String>();
+									itemAndConfig.add(itemNameSplit[0].replace("I:", "").replace(" ", "").replace("\"", ""));
+									itemAndConfig.add(getPrettyName(configFile.getAbsolutePath()));
+									
+									itemIDs.put(Integer.valueOf(configLine.substring(configLine.lastIndexOf("=") + 1)), itemAndConfig);
 									continue;
 									
 									//& or &&?
@@ -178,7 +199,11 @@ public class ConfigHelper {
 										
 										String[] nameSplit = configLine.split("=");
 										
-										unknownIDs.put(Integer.valueOf(configLine.substring(configLine.lastIndexOf("=") + 1)), nameSplit[0].replace("I:", "").replace(" ", "").replace("\"", ""));
+										ArrayList<String> unknownAndConfig = new ArrayList<String>();
+										unknownAndConfig.add(nameSplit[0].replace("I:", "").replace(" ", "").replace("\"", ""));
+										unknownAndConfig.add(getPrettyName(configFile.getAbsolutePath()));
+										
+										unknownIDs.put(Integer.valueOf(configLine.substring(configLine.lastIndexOf("=") + 1)), unknownAndConfig);
 										continue;
 										
 									} else {
@@ -201,6 +226,18 @@ public class ConfigHelper {
 					}
 				}
 			}
+		}
+	}
+	
+	private static String getPrettyName(String input) {
+		
+		if (input.contains("\\")) {
+			
+			return input.substring(input.lastIndexOf("\\") + 1);
+			
+		} else {
+			
+			return input.substring(input.lastIndexOf("/") + 1);
 		}
 	}
 	

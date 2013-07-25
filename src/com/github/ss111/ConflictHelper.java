@@ -13,7 +13,7 @@ public class ConflictHelper {
 	public static Boolean isConflicting(MultiValueMap map, Integer key, String type) {
 		
 		@SuppressWarnings("unchecked")
-		Collection<String> names = map.getCollection(key);
+		Collection<ArrayList<String>> names = map.getCollection(key);
 	
 		if (names.size() == 1) {
 			
@@ -21,9 +21,14 @@ public class ConflictHelper {
 			
 		} else {
 			
-			String[] namesArray = (String[]) names.toArray(new String[0]);
+			ArrayList<String> namesArray = new ArrayList<String>();
 			
-			if (namesArray[0].equals(namesArray[1])) {
+			for (ArrayList<String> combo : names) {
+				
+				namesArray.add(combo.toArray()[0].toString());
+			}
+			
+			if (namesArray.toArray()[0].toString().equals(namesArray.toArray()[1].toString())) {
 				
 				return false;
 				
@@ -46,7 +51,7 @@ public class ConflictHelper {
 	public static Boolean isConflicting(MultiValueMap map, Integer key) {
 		
 		@SuppressWarnings("unchecked")
-		Collection<String> names = map.getCollection(key);
+		Collection<ArrayList<String>> names = map.getCollection(key);
 	
 		if (names.size() == 1) {
 			
@@ -54,9 +59,14 @@ public class ConflictHelper {
 			
 		} else {
 			
-			String[] namesArray = (String[]) names.toArray(new String[0]);
+			ArrayList<String> namesArray = new ArrayList<String>();
 			
-			if (namesArray[0].equals(namesArray[1])) {
+			for (ArrayList<String> combo : names) {
+				
+				namesArray.add(combo.toArray()[0].toString());
+			}
+			
+			if (namesArray.toArray()[0].toString().equals(namesArray.toArray()[1].toString())) {
 				
 				return false;
 				
@@ -70,78 +80,459 @@ public class ConflictHelper {
 	public static String getName(MultiValueMap map, Integer key) {
 		
 		@SuppressWarnings("unchecked")
-		Collection<String> names = map.getCollection(key);
+		Collection<ArrayList<String>> names = map.getCollection(key);
 		
-		String[] namesArray = (String[]) names.toArray(new String[0]);
+		String name = new String();
 		
-		return namesArray[0];
+		for (ArrayList<String> combo : names) {
+			
+			name = combo.toArray()[0].toString();
+			break;
+		}
+		
+		return name;
 		
 	}
 	
 	public static String getConflictString(MultiValueMap map, Integer key) {
 		
 		@SuppressWarnings("unchecked")
-		Collection<String> names = map.getCollection(key);
+		Collection<ArrayList<String>> names = map.getCollection(key);
 		
 		if (names.size() == 2) {
 			
-			String[] namesArray = (String[]) names.toArray(new String[0]);
+			ArrayList<String> namesArray = new ArrayList<String>();
 			
-			return "(" + namesArray[0] + " conflicts with " + namesArray[1] + ")";
+			for (ArrayList<String> combo : names) {
+				
+				namesArray.add(combo.toArray()[0].toString());
+			}
+			
+			return "(" + namesArray.toArray()[0].toString() + " conflicts with " + namesArray.toArray()[1].toString() + ")";
 			
 		} else if (names.size() == 3) {
 			
-			String[] namesArray = (String[]) names.toArray(new String[0]);
+			ArrayList<String> namesArray = new ArrayList<String>();
 			
-			return "(" + namesArray[0] + " conflicts with " + namesArray[1] + " and " + namesArray[2] + ")";
+			for (ArrayList<String> combo : names) {
+				
+				namesArray.add(combo.toArray()[0].toString());
+			}
+			
+			return "(" + namesArray.toArray()[0].toString() + " conflicts with " + namesArray.toArray()[1].toString() + " and " + namesArray.toArray()[2].toString() + ")";
 			
 		} else if (names.size() == 4) {
 			
-			String[] namesArray = (String[]) names.toArray(new String[0]);
+			ArrayList<String> namesArray = new ArrayList<String>();
 			
-			return "(" + namesArray[0] + " conflicts with " + namesArray[1] + ", " + namesArray[2] + ", and " + namesArray[3] + ")";
+			for (ArrayList<String> combo : names) {
+				
+				namesArray.add(combo.toArray()[0].toString());
+			}
+			
+			return "(" + namesArray.toArray()[0].toString() + " conflicts with " + namesArray.toArray()[1].toString() + ", " + namesArray.toArray()[2].toString() + ", and " + namesArray.toArray()[3].toString() + ")";
 			
 		} else if (names.size() == 5) {
 			
-			String[] namesArray = (String[]) names.toArray(new String[0]);
+			ArrayList<String> namesArray = new ArrayList<String>();
 			
-			return "(" + namesArray[0] + " conflicts with " + namesArray[1] + ", " + namesArray[2] + ", " + namesArray[3] + ", and " + namesArray[4] + ")";
+			for (ArrayList<String> combo : names) {
+				
+				namesArray.add(combo.toArray()[0].toString());
+			}
+			
+			return "(" + namesArray.toArray()[0].toString() + " conflicts with " + namesArray.toArray()[1].toString() + ", " + namesArray.toArray()[2].toString() + ", " + namesArray.toArray()[3].toString() + ", and " + namesArray.toArray()[4].toString() + ")";
 			
 		} else if (names.size() == 6) {
 			
-			String[] namesArray = (String[]) names.toArray(new String[0]);
+			ArrayList<String> namesArray = new ArrayList<String>();
 			
-			return "(" + namesArray[0] + " conflicts with " + namesArray[1] + ", " + namesArray[2] + ", " + namesArray[3] + ", " + namesArray[4] + ", and " + namesArray[5] + ")";
+			for (ArrayList<String> combo : names) {
+				
+				namesArray.add(combo.toArray()[0].toString());
+			}
+			
+			return "(" + namesArray.toArray()[0].toString() + " conflicts with " + namesArray.toArray()[1].toString() + ", " + namesArray.toArray()[2].toString() + ", " + namesArray.toArray()[3].toString() + ", " + namesArray.toArray()[4].toString() + ", and " + namesArray.toArray()[5].toString() + ")";
 			
 		} else if (names.size() == 7) {
 			
-            String[] namesArray = (String[]) names.toArray(new String[0]);
+			ArrayList<String> namesArray = new ArrayList<String>();
 			
-			return "(" + namesArray[0] + " conflicts with " + namesArray[1] + ", " + namesArray[2] + ", " + namesArray[3] + ", " + namesArray[4] + ", " + namesArray[5] + ", and" + namesArray[6] + ")";
+			for (ArrayList<String> combo : names) {
+				
+				namesArray.add(combo.toArray()[0].toString());
+			}
+			
+			return "(" + namesArray.toArray()[0].toString() + " conflicts with " + namesArray.toArray()[1].toString() + ", " + namesArray.toArray()[2].toString() + ", " + namesArray.toArray()[3].toString() + ", " + namesArray.toArray()[4].toString() + ", " + namesArray.toArray()[5].toString() + ", and" + namesArray.toArray()[6].toString() + ")";
 			
 		} else if (names.size() == 8) {
 			
-			 String[] namesArray = (String[]) names.toArray(new String[0]);
+			ArrayList<String> namesArray = new ArrayList<String>();
+			
+			for (ArrayList<String> combo : names) {
 				
-		     return "(" + namesArray[0] + " conflicts with " + namesArray[1] + ", " + namesArray[2] + ", " + namesArray[3] + ", " + namesArray[4] + ", " + namesArray[5] + ", " + namesArray[6] + ", and" + namesArray[7] + ")";
+				namesArray.add(combo.toArray()[0].toString());
+			}
+				
+		     return "(" + namesArray.toArray()[0].toString() + " conflicts with " + namesArray.toArray()[1].toString() + ", " + namesArray.toArray()[2].toString() + ", " + namesArray.toArray()[3].toString() + ", " + namesArray.toArray()[4].toString() + ", " + namesArray.toArray()[5].toString() + ", " + namesArray.toArray()[6].toString() + ", and" + namesArray.toArray()[7].toString() + ")";
 		     
 		} else if (names.size() == 9) {
 			
-			 String[] namesArray = (String[]) names.toArray(new String[0]);
+			ArrayList<String> namesArray = new ArrayList<String>();
+			
+			for (ArrayList<String> combo : names) {
 				
-		     return "(" + namesArray[0] + " conflicts with " + namesArray[1] + ", " + namesArray[2] + ", " + namesArray[3] + ", " + namesArray[4] + ", " + namesArray[5] + ", " + namesArray[6] + ", " + namesArray[7] + ", and" + namesArray[8] + ")";
+				namesArray.add(combo.toArray()[0].toString());
+			}
+				
+		     return "(" + namesArray.toArray()[0].toString() + " conflicts with " + namesArray.toArray()[1].toString() + ", " + namesArray.toArray()[2].toString() + ", " + namesArray.toArray()[3].toString() + ", " + namesArray.toArray()[4].toString() + ", " + namesArray.toArray()[5].toString() + ", " + namesArray.toArray()[6].toString() + ", " + namesArray.toArray()[7].toString() + ", and" + namesArray.toArray()[8].toString() + ")";
 		     
 		} else if (names.size() == 10) {
 			
-			 String[] namesArray = (String[]) names.toArray(new String[0]);
+			ArrayList<String> namesArray = new ArrayList<String>();
+			
+			for (ArrayList<String> combo : names) {
 				
-		     return "(" + namesArray[0] + " conflicts with " + namesArray[1] + ", " + namesArray[2] + ", " + namesArray[3] + ", " + namesArray[4] + ", " + namesArray[5] + ", " + namesArray[6] + ", " + namesArray[7] + ", " + namesArray[8] + ", and" + namesArray[9] + ")";
+				namesArray.add(combo.toArray()[0].toString());
+			}
+				
+		     return "(" + namesArray.toArray()[0].toString() + " conflicts with " + namesArray.toArray()[1].toString() + ", " + namesArray.toArray()[2].toString() + ", " + namesArray.toArray()[3].toString() + ", " + namesArray.toArray()[4].toString() + ", " + namesArray.toArray()[5].toString() + ", " + namesArray.toArray()[6].toString() + ", " + namesArray.toArray()[7].toString() + ", " + namesArray.toArray()[8].toString() + ", and" + namesArray.toArray()[9].toString() + ")";
 		     
 		} else {
 			
-			String[] namesArray = (String[]) names.toArray(new String[0]);
+			ArrayList<String> namesArray = new ArrayList<String>();
 			
-			return namesArray[0] + " conflicts with 10+ blocks/items. If you see this message on the block or item tab, let me know on the forum!";
+			for (ArrayList<String> combo : names) {
+				
+				namesArray.add(combo.toArray()[0].toString());
+			}
+			
+			return namesArray.toArray()[0].toString() + " conflicts with 10+ blocks. If you see this message in the block or item tab, let me know on the forum!";
+		}
+	}
+	
+	public static String getConfigConflictString(MultiValueMap map, Integer key, String type) {
+		
+		@SuppressWarnings("unchecked")
+		Collection<ArrayList<String>> names = map.getCollection(key);
+		
+		if (type == "BLOCK") {
+			
+			if (names.size() == 2) {
+				
+				ArrayList<String> configArray = new ArrayList<String>();
+				
+				for (ArrayList<String> combo : names) {
+					
+					configArray.add(combo.toArray()[1].toString());
+				}
+				
+				return "The above conflict's blocks are located in " + configArray.toArray()[0].toString() +  " and " + configArray.toArray()[1].toString() + ".";
+				
+			} else if (names.size() == 3) {
+				
+				ArrayList<String> configArray = new ArrayList<String>();
+				
+				for (ArrayList<String> combo : names) {
+					
+					configArray.add(combo.toArray()[1].toString());
+				}
+				
+				return "The above conflict's blocks are located in " + configArray.toArray()[0].toString() + ", " + configArray.toArray()[1].toString() + ", and " + configArray.toArray()[2].toString() + ".";
+				
+			} else if (names.size() == 4) {
+				
+				ArrayList<String> configArray = new ArrayList<String>();
+				
+				for (ArrayList<String> combo : names) {
+					
+					configArray.add(combo.toArray()[1].toString());
+				}
+				
+				return "The above conflict's blocks are located in " + configArray.toArray()[0].toString() + ", " + configArray.toArray()[1].toString() + ", " + configArray.toArray()[2].toString() + ", and " + configArray.toArray()[3].toString() + ".";
+				
+			} else if (names.size() == 5) {
+				
+				ArrayList<String> configArray = new ArrayList<String>();
+				
+				for (ArrayList<String> combo : names) {
+					
+					configArray.add(combo.toArray()[1].toString());
+				}
+				
+				return "The above conflict's blocks are located in " + configArray.toArray()[0].toString() + ", " + configArray.toArray()[1].toString() + ", " + configArray.toArray()[2].toString() + ", " + configArray.toArray()[3].toString() + ", and " + configArray.toArray()[4].toString() + ".";
+				
+			} else if (names.size() == 6) {
+				
+				ArrayList<String> configArray = new ArrayList<String>();
+				
+				for (ArrayList<String> combo : names) {
+					
+					configArray.add(combo.toArray()[1].toString());
+				}
+				
+				return "The above conflict's blocks are located in " + configArray.toArray()[0].toString() + ", " + configArray.toArray()[1].toString() + ", " + configArray.toArray()[2].toString() + ", " + configArray.toArray()[3].toString() + "," + configArray.toArray()[4].toString() + ", and " + configArray.toArray()[5].toString() + ".";
+				
+			} else if (names.size() == 7) {
+				
+				ArrayList<String> configArray = new ArrayList<String>();
+				
+				for (ArrayList<String> combo : names) {
+					
+					configArray.add(combo.toArray()[1].toString());
+				}
+				
+				return "The above conflict's blocks are located in " + configArray.toArray()[0].toString() + ", " + configArray.toArray()[1].toString() + ", " + configArray.toArray()[2].toString() + ", " + configArray.toArray()[3].toString() + "," + configArray.toArray()[4].toString() + ", " + configArray.toArray()[5].toString() + ", and " + configArray.toArray()[6].toString() + ".";
+				
+			} else if (names.size() == 8) {
+				
+				ArrayList<String> configArray = new ArrayList<String>();
+				
+				for (ArrayList<String> combo : names) {
+					
+					configArray.add(combo.toArray()[1].toString());
+				}
+				
+				return "The above conflict's blocks are located in " + configArray.toArray()[0].toString() + ", " + configArray.toArray()[1].toString() + ", " + configArray.toArray()[2].toString() + ", " + configArray.toArray()[3].toString() + "," + configArray.toArray()[4].toString() + ", " + configArray.toArray()[5].toString() + ", " + configArray.toArray()[6].toString() + ", and " + configArray.toArray()[7].toString() + ".";
+				
+			} else if (names.size() == 9) {
+				
+				ArrayList<String> configArray = new ArrayList<String>();
+				
+				for (ArrayList<String> combo : names) {
+					
+					configArray.add(combo.toArray()[1].toString());
+				}
+				
+				return "The above conflict's blocks are located in " + configArray.toArray()[0].toString() + ", " + configArray.toArray()[1].toString() + ", " + configArray.toArray()[2].toString() + ", " + configArray.toArray()[3].toString() + "," + configArray.toArray()[4].toString() + ", " + configArray.toArray()[5].toString() + ", " + configArray.toArray()[6].toString() + ", " + configArray.toArray()[7].toString() + ", and " + configArray.toArray()[8].toString() + ".";
+				
+			} else if (names.size() == 10) {
+				
+				ArrayList<String> configArray = new ArrayList<String>();
+				
+				for (ArrayList<String> combo : names) {
+					
+					configArray.add(combo.toArray()[1].toString());
+				}
+				
+				return "The above conflict's blocks are located in " + configArray.toArray()[0].toString() + ", " + configArray.toArray()[1].toString() + ", " + configArray.toArray()[2].toString() + ", " + configArray.toArray()[3].toString() + "," + configArray.toArray()[4].toString() + ", " + configArray.toArray()[5].toString() + ", " + configArray.toArray()[6].toString() + ", " + configArray.toArray()[7].toString() + ", " + configArray.toArray()[8].toString() + ", and " + configArray.toArray()[9].toString() + ".";
+				
+			} else {
+				
+				return "The above conflict's blocks are located in 10+ configuration files. If you see this message in the block or item tab, let me know on the forum!";
+			}
+			
+		} else if (type == "ITEM") {
+			
+			if (names.size() == 2) {
+				
+				ArrayList<String> configArray = new ArrayList<String>();
+				
+				for (ArrayList<String> combo : names) {
+					
+					configArray.add(combo.toArray()[1].toString());
+				}
+				
+				return "The above conflict's items are located in " + configArray.toArray()[0].toString() +  " and " + configArray.toArray()[1].toString() + ".";
+				
+			} else if (names.size() == 3) {
+				
+				ArrayList<String> configArray = new ArrayList<String>();
+				
+				for (ArrayList<String> combo : names) {
+					
+					configArray.add(combo.toArray()[1].toString());
+				}
+				
+				return "The above conflict's items are located in " + configArray.toArray()[0].toString() + ", " + configArray.toArray()[1].toString() + ", and " + configArray.toArray()[2].toString() + ".";
+				
+			} else if (names.size() == 4) {
+				
+				ArrayList<String> configArray = new ArrayList<String>();
+				
+				for (ArrayList<String> combo : names) {
+					
+					configArray.add(combo.toArray()[1].toString());
+				}
+				
+				return "The above conflict's items are located in " + configArray.toArray()[0].toString() + ", " + configArray.toArray()[1].toString() + ", " + configArray.toArray()[2].toString() + ", and " + configArray.toArray()[3].toString() + ".";
+				
+			} else if (names.size() == 5) {
+				
+				ArrayList<String> configArray = new ArrayList<String>();
+				
+				for (ArrayList<String> combo : names) {
+					
+					configArray.add(combo.toArray()[1].toString());
+				}
+				
+				return "The above conflict's items are located in " + configArray.toArray()[0].toString() + ", " + configArray.toArray()[1].toString() + ", " + configArray.toArray()[2].toString() + ", " + configArray.toArray()[3].toString() + ", and " + configArray.toArray()[4].toString() + ".";
+				
+			} else if (names.size() == 6) {
+				
+				ArrayList<String> configArray = new ArrayList<String>();
+				
+				for (ArrayList<String> combo : names) {
+					
+					configArray.add(combo.toArray()[1].toString());
+				}
+				
+				return "The above conflict's items are located in " + configArray.toArray()[0].toString() + ", " + configArray.toArray()[1].toString() + ", " + configArray.toArray()[2].toString() + ", " + configArray.toArray()[3].toString() + "," + configArray.toArray()[4].toString() + ", and " + configArray.toArray()[5].toString() + ".";
+				
+			} else if (names.size() == 7) {
+				
+				ArrayList<String> configArray = new ArrayList<String>();
+				
+				for (ArrayList<String> combo : names) {
+					
+					configArray.add(combo.toArray()[1].toString());
+				}
+				
+				return "The above conflict's items are located in " + configArray.toArray()[0].toString() + ", " + configArray.toArray()[1].toString() + ", " + configArray.toArray()[2].toString() + ", " + configArray.toArray()[3].toString() + "," + configArray.toArray()[4].toString() + ", " + configArray.toArray()[5].toString() + ", and " + configArray.toArray()[6].toString() + ".";
+				
+			} else if (names.size() == 8) {
+				
+				ArrayList<String> configArray = new ArrayList<String>();
+				
+				for (ArrayList<String> combo : names) {
+					
+					configArray.add(combo.toArray()[1].toString());
+				}
+				
+				return "The above conflict's items are located in " + configArray.toArray()[0].toString() + ", " + configArray.toArray()[1].toString() + ", " + configArray.toArray()[2].toString() + ", " + configArray.toArray()[3].toString() + "," + configArray.toArray()[4].toString() + ", " + configArray.toArray()[5].toString() + ", " + configArray.toArray()[6].toString() + ", and " + configArray.toArray()[7].toString() + ".";
+				
+			} else if (names.size() == 9) {
+				
+				ArrayList<String> configArray = new ArrayList<String>();
+				
+				for (ArrayList<String> combo : names) {
+					
+					configArray.add(combo.toArray()[1].toString());
+				}
+				
+				return "The above conflict's items are located in " + configArray.toArray()[0].toString() + ", " + configArray.toArray()[1].toString() + ", " + configArray.toArray()[2].toString() + ", " + configArray.toArray()[3].toString() + "," + configArray.toArray()[4].toString() + ", " + configArray.toArray()[5].toString() + ", " + configArray.toArray()[6].toString() + ", " + configArray.toArray()[7].toString() + ", and " + configArray.toArray()[8].toString() + ".";
+				
+			} else if (names.size() == 10) {
+				
+				ArrayList<String> configArray = new ArrayList<String>();
+				
+				for (ArrayList<String> combo : names) {
+					
+					configArray.add(combo.toArray()[1].toString());
+				}
+				
+				return "The above conflict's items are located in " + configArray.toArray()[0].toString() + ", " + configArray.toArray()[1].toString() + ", " + configArray.toArray()[2].toString() + ", " + configArray.toArray()[3].toString() + "," + configArray.toArray()[4].toString() + ", " + configArray.toArray()[5].toString() + ", " + configArray.toArray()[6].toString() + ", " + configArray.toArray()[7].toString() + ", " + configArray.toArray()[8].toString() + ", and " + configArray.toArray()[9].toString() + ".";
+				
+			} else {
+				
+				return "The above conflict's items are located in 10+ configuration files. If you see this message in the block or item tab, let me know on the forum!";
+			}
+			
+		} else {
+			
+			if (names.size() == 2) {
+				
+				ArrayList<String> configArray = new ArrayList<String>();
+				
+				for (ArrayList<String> combo : names) {
+					
+					configArray.add(combo.toArray()[1].toString());
+				}
+				
+				return "The above conflict's blocks/items are located in " + configArray.toArray()[0].toString() +  " and " + configArray.toArray()[1].toString() + ".";
+				
+			} else if (names.size() == 3) {
+				
+				ArrayList<String> configArray = new ArrayList<String>();
+				
+				for (ArrayList<String> combo : names) {
+					
+					configArray.add(combo.toArray()[1].toString());
+				}
+				
+				return "The above conflict's blocks/items are located in " + configArray.toArray()[0].toString() + ", " + configArray.toArray()[1].toString() + ", and " + configArray.toArray()[2].toString() + ".";
+				
+			} else if (names.size() == 4) {
+				
+				ArrayList<String> configArray = new ArrayList<String>();
+				
+				for (ArrayList<String> combo : names) {
+					
+					configArray.add(combo.toArray()[1].toString());
+				}
+				
+				return "The above conflict's blocks/items are located in " + configArray.toArray()[0].toString() + ", " + configArray.toArray()[1].toString() + ", " + configArray.toArray()[2].toString() + ", and " + configArray.toArray()[3].toString() + ".";
+				
+			} else if (names.size() == 5) {
+				
+				ArrayList<String> configArray = new ArrayList<String>();
+				
+				for (ArrayList<String> combo : names) {
+					
+					configArray.add(combo.toArray()[1].toString());
+				}
+				
+				return "The above conflict's blocks/items are located in " + configArray.toArray()[0].toString() + ", " + configArray.toArray()[1].toString() + ", " + configArray.toArray()[2].toString() + ", " + configArray.toArray()[3].toString() + ", and " + configArray.toArray()[4].toString() + ".";
+				
+			} else if (names.size() == 6) {
+				
+				ArrayList<String> configArray = new ArrayList<String>();
+				
+				for (ArrayList<String> combo : names) {
+					
+					configArray.add(combo.toArray()[1].toString());
+				}
+				
+				return "The above conflict's blocks/items are located in " + configArray.toArray()[0].toString() + ", " + configArray.toArray()[1].toString() + ", " + configArray.toArray()[2].toString() + ", " + configArray.toArray()[3].toString() + "," + configArray.toArray()[4].toString() + ", and " + configArray.toArray()[5].toString() + ".";
+				
+			} else if (names.size() == 7) {
+				
+				ArrayList<String> configArray = new ArrayList<String>();
+				
+				for (ArrayList<String> combo : names) {
+					
+					configArray.add(combo.toArray()[1].toString());
+				}
+				
+				return "The above conflict's blocks/items are located in " + configArray.toArray()[0].toString() + ", " + configArray.toArray()[1].toString() + ", " + configArray.toArray()[2].toString() + ", " + configArray.toArray()[3].toString() + "," + configArray.toArray()[4].toString() + ", " + configArray.toArray()[5].toString() + ", and " + configArray.toArray()[6].toString() + ".";
+				
+			} else if (names.size() == 8) {
+				
+				ArrayList<String> configArray = new ArrayList<String>();
+				
+				for (ArrayList<String> combo : names) {
+					
+					configArray.add(combo.toArray()[1].toString());
+				}
+				
+				return "The above conflict's blocks/items are located in " + configArray.toArray()[0].toString() + ", " + configArray.toArray()[1].toString() + ", " + configArray.toArray()[2].toString() + ", " + configArray.toArray()[3].toString() + "," + configArray.toArray()[4].toString() + ", " + configArray.toArray()[5].toString() + ", " + configArray.toArray()[6].toString() + ", and " + configArray.toArray()[7].toString() + ".";
+				
+			} else if (names.size() == 9) {
+				
+				ArrayList<String> configArray = new ArrayList<String>();
+				
+				for (ArrayList<String> combo : names) {
+					
+					configArray.add(combo.toArray()[1].toString());
+				}
+				
+				return "The above conflict's blocks/items are located in " + configArray.toArray()[0].toString() + ", " + configArray.toArray()[1].toString() + ", " + configArray.toArray()[2].toString() + ", " + configArray.toArray()[3].toString() + "," + configArray.toArray()[4].toString() + ", " + configArray.toArray()[5].toString() + ", " + configArray.toArray()[6].toString() + ", " + configArray.toArray()[7].toString() + ", and " + configArray.toArray()[8].toString() + ".";
+				
+			} else if (names.size() == 10) {
+				
+				ArrayList<String> configArray = new ArrayList<String>();
+				
+				for (ArrayList<String> combo : names) {
+					
+					configArray.add(combo.toArray()[1].toString());
+				}
+				
+				return "The above conflict's blocks/items are located in " + configArray.toArray()[0].toString() + ", " + configArray.toArray()[1].toString() + ", " + configArray.toArray()[2].toString() + ", " + configArray.toArray()[3].toString() + "," + configArray.toArray()[4].toString() + ", " + configArray.toArray()[5].toString() + ", " + configArray.toArray()[6].toString() + ", " + configArray.toArray()[7].toString() + ", " + configArray.toArray()[8].toString() + ", and " + configArray.toArray()[9].toString() + ".";
+				
+			} else {
+				
+				return "The above conflict's blocks/items are located in 10+ configuration files. If you see this message in the block or item tab, let me know on the forum!";
+			}
 		}
 	}
 	
