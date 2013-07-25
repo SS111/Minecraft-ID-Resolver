@@ -179,7 +179,7 @@ public class WindowMain {
 						
 						if (ConflictHelper.isConflicting(ConfigHelper.getBlockIDs(), ID, "BLOCK") == true) {
 							
-							listModelBlocks.addElement(ColoredString.getColoredString("Block ID: " + ID + " | " + ConflictHelper.getConflictString(ConfigHelper.getBlockIDs(), ID)));
+							listModelBlocks.addElement(getColoredString("Block ID: " + ID + " | " + ConflictHelper.getConflictString(ConfigHelper.getBlockIDs(), ID)));
 							conflicts++;
 							
 						} else {
@@ -199,7 +199,7 @@ public class WindowMain {
 						
 						if (ConflictHelper.isConflicting(ConfigHelper.getItemIDs(), ID, "ITEM") == true) {
 							
-							listModelItems.addElement(ColoredString.getColoredString("Item ID: " + ID + " | " + ConflictHelper.getConflictString(ConfigHelper.getItemIDs(), ID)));
+							listModelItems.addElement(getColoredString("Item ID: " + ID + " | " + ConflictHelper.getConflictString(ConfigHelper.getItemIDs(), ID)));
 							conflicts++;
 							
 						} else {
@@ -220,7 +220,7 @@ public class WindowMain {
     					
     					if (ConflictHelper.isConflicting(ConfigHelper.getUnknownIDs(), ID, "UNKNOWN") == true) {
     						
-    						listModelUnknown.addElement(ColoredString.getColoredString("ID: " + ID + " | " + ConflictHelper.getConflictString(ConfigHelper.getUnknownIDs(), ID)));
+    						listModelUnknown.addElement(getColoredString("ID: " + ID + " | " + ConflictHelper.getConflictString(ConfigHelper.getUnknownIDs(), ID)));
     						conflicts++;
     						
     					} else {
@@ -292,5 +292,10 @@ public class WindowMain {
 		tabbedPaneIDs.setEnabled(false);
 		frmMain.getContentPane().add(tabbedPaneIDs, "cell 0 2 5 2,grow");
 		
+	}
+	
+	private static String getColoredString(String input) {
+		
+		return "<html><font color=red>" + input + "</font></html>";
 	}
 }
