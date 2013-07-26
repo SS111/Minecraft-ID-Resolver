@@ -48,15 +48,15 @@ However, I do ask that:
 
 1. Don't make any readme changes unless its of *vast importance*
 2. Don't just change a variable or function name and call it a pull request. Please only commit changes that add new content or changes something that is *very important*
-3. Follow my coding format
+3. Follow my coding style
 
-###My coding format
+###My coding style
 
 When making a pull request, I ask that you follow a few simple format rules that I use so that even in the future the code still flows nicely.
 
 Rules:
 
-+ Please keep the first bracket on the opening line
++ Keep the first brace on the opening line
 
 e.g.
 
@@ -77,17 +77,19 @@ public static void foo()
 }
 ```
 
-+ Keep spaces when performing actions on different variables
++ Separate actions/variable manipulations that are different
++ However, breaks, continues, etc. *can* stay directly under any action.
 
 e.g.
 
 ```java
-public static void foo() {
+public static String doStuffAndGetFoo() {
 
-bar.setValue("something else");
-bar.setValue("something else");
+bar.setValue("foo");
+bar.setValue("foo");
 
 bar2.setValue("foo");
+return foo;
 
 }
 ```
@@ -95,11 +97,13 @@ bar2.setValue("foo");
 not
 
 ```java
-public static void foo() {
+public static String doStuffAndGetFoo() {
 
-bar.setValue("something else");
-bar.setValue("something else");
+bar.setValue("foo");
+bar.setValue("foo");
 bar2.setValue("foo");
+
+return foo;
 
 }
 ```
@@ -134,42 +138,51 @@ if (foo==bar) {
 
 #Using my code in your program
 
-If you want to use my code in your program, that's great! I do ask that you **please** give me credit. To start off, your going to need to add [Apache Commons Collections](http://commons.apache.org/proper/commons-collections/), and [Appache Commons IO](http://commons.apache.org/proper/commons-io/) to your project. From there my "libraries" are pretty straightforward (most of the time...) but I'll give examples anyway.
+If you want to use my code in your program, that's great! I do ask that you **please** give me credit. To start off, your going to need to add [Apache Commons Collections](http://commons.apache.org/proper/commons-collections/), and [Appache Commons IO](http://commons.apache.org/proper/commons-io/) to your project. From there, my "libraries" are pretty straightforward (most of the time...), but I've still included a (poorly written) Javadoc which is avliable [here](http://ss111.github.io/midr-doc/). In addition, below is a basic example of how to find and resolve ID conflicts.
 
-You will first want to call
+You will first want to call:
 
 ```java
-ConfigHelper.populateMap("/path/to/configuration/directory");
+ConfigHelper.populateMaps("/path/to/configuration/directory");
 ```
 
-This will populate [MultiValueMap](http://commons.apache.org/proper/commons-collections/apidocs/org/apache/commons/collections4/map/MultiValueMap.html)s with every item ID found in the configuration directory and it's corrosponding name(s).
+This will populate [MultiValueMap](http://commons.apache.org/proper/commons-collections/apidocs/org/apache/commons/collections4/map/MultiValueMap.html)s (one for blocks, items, and unknown IDs [IDs that may or may not be blocks/items]) with every item ID found in the configuration directory, and [ArrayList](http://docs.oracle.com/javase/7/docs/api/java/util/ArrayList.html)s containing the IDs corrosponding name(s), and which configuration file(s) it was found in.
+
+It can be visualized somewhat like this:
+
+> Key: 1337
+>
+> Value(s): ["awesomeBlock", "awesomeConfig.cfg"], ["conflictingBlock", otherConfig.cfg"]
+
+So, the ID 1337 has 2 (in this case) blocks mapped to it.
 
 From there, you can retrieve these maps by doing:
 
 ```java
-MultiValueMap myMap = ConfigHelper.getBlockIDs();
-MultiValueMap mySecondMap = ConfigHelper.getItemIDs();
+MultiValueMap blockMap = ConfigHelper.getBlockIDs();
+MultiValueMap itemMap = ConfigHelper.getItemIDs();
+MultiValueMap unknownMap = ConfigHelper.getUnknownIDs();
 ```
 
-By iterating through this map, you can then determine if an ID is conflicting or not by doing:
+By iterating through one of these maps, you can then determine if an ID is conflicting or not by doing:
 
 ```java
 for (Object key: myMap) {
 
-ID = Integer.valueOf(key.toString());
+	ID = Integer.valueOf(key.toString());
 
-if (ConflictHelper.isConflicting(myMap, ID) == true) {
-//Optionally, you can also pass the type parameter to automatically store conflicting items in an ArrayList
-//if (ConflictHelper.isConflicting(myMap, ID, "BLOCK") == true) {
+	if (ConflictHelper.isConflicting(myMap, ID) == true) {
+	//Optionally, you can also pass the type parameter to automatically store conflicting items in an ArrayList
+	//if (ConflictHelper.isConflicting(blockMap, ID, "BLOCK") == true) {
 
-         //Do some stuff here
+         	//Do some stuff here
 
          }
 
 }
 ```
 
-The above method will return true or false respectively. You can also optionally pass the type parameter (either BLOCK or ITEM) and ConflictHelper will store the conflicting IDs in thier respective ArrayList.
+The above method will return true or false respectively. You can also optionally pass the type parameter (either BLOCK or ITEM. This *is* case sensitive!) and ConflictHelper will store the conflicting IDs in thier respective ArrayLists.
 
 If you want conflicts to automatically be resolved, we now need to populate more ArrayLists that will contain the unused block and item IDs. It's as simple as calling:
 
@@ -177,14 +190,14 @@ If you want conflicts to automatically be resolved, we now need to populate more
 IdDumpHelper.populateUnusedIDs("/path/to/nei/id/dump/");
 ```
 
-You can get the unused block/item IDs by calling:
+You can also get the unused block/item IDs by calling:
 
 ```java
-ArrayList<Integer> myList = IdDumpHelper.getUnusedBlockIDs();
-ArrayList<Integer> mySecondList = IdDumpHelper.getUnusedItemIDs();
+ArrayList<Integer> unusedBlocks = IdDumpHelper.getUnusedBlockIDs();
+ArrayList<Integer> unusedItems = IdDumpHelper.getUnusedItemIDs();
 ```
 
-Finally, to resolve the conflicts you can simply do:
+Finally, to resolve the conflicts it's as easy as calling:
 
 ```java
 ConflictResolver.resolveConflicts("/path/to/configuration/directory", IdDumpHelper.getUnusedBlockIDs(), IdDumpHelper.getUnusedItemIDs(), ConflictHelper.getConflictingBlocks(), ConflictHelper.getConflictingItems());
