@@ -9,13 +9,28 @@ import java.util.ArrayList;
 
 import org.apache.commons.io.FileUtils;
 
+/**
+ * ConflictResolver is used to help resolve ID conflicts. It's only functionality is the ability to parse Forge configuration files and then solve ID conflicts based on the information given.
+ * @author SS111
+ */
 public class ConflictResolver {
 	
 	private static BufferedReader configReader;
 	private static String configLine;
 	private static Boolean blockComingUp = false;
 	private static Boolean itemComingUp = false;
-			
+	
+	/**
+	 * Resolves ID conflicts in the configuration files.
+	 * @author SS111
+	 * @param path
+	 * @param unusedBlocks the unused block IDs
+	 * @param unusedItems the of unused item IDs
+	 * @param conflictingBlocks the conflicting block IDs
+	 * @param conflictingItems the conflicting item IDs
+	 * @see <a href="http://commons.apache.org/proper/commons-collections/apidocs/org/apache/commons/collections4/map/MultiValueMap.html">MultiValueMap</a>
+	 * @see ArrayList
+	 */
 	public static void resolveConflicts(String path, ArrayList<Integer> unusedBlocks, ArrayList<Integer> unusedItems, ArrayList<Integer> conflictingBlocks, ArrayList<Integer> conflictingItems) {
 	
 		File configDirectory = new File(path);

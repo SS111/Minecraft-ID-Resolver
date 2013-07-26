@@ -5,11 +5,29 @@ import java.util.Collection;
 
 import org.apache.commons.collections.map.MultiValueMap;
 
+/**
+ * ConflictHelper is used to help with conflicts. It's main functionality includes the ability determine if an ID is conflicting, and to generate sentences stating the conflicts and where the conflicts are located.
+ * @author SS111
+ */
 public class ConflictHelper {
 	
 	private static ArrayList<Integer> conflictingBlocks = new ArrayList<Integer>();
 	private static ArrayList<Integer> conflictingItems = new ArrayList<Integer>();
 	
+	/**
+	 * Determines if a block/item is has a conflicting ID.
+	 * <p>
+	 * Optionally, by passing the type argument (either BLOCK or ITEM), ConflictHelper will store conflicting block/item IDs in their respective ArrayLists which can then be retrieved by calling ConfigHelper.getConflictingBlocks() or ConfigHelper.getConflictingItems().
+	 * @author SS111
+	 * @param map a <a href="http://commons.apache.org/proper/commons-collections/apidocs/org/apache/commons/collections4/map/MultiValueMap.html">MultiValueMap</a> populated by ConfigHelper
+	 * @param key the block/item ID
+	 * @param type the map type (BLOCK or ITEM)
+	 * @return Boolean
+	 * @see <a href="http://commons.apache.org/proper/commons-collections/apidocs/org/apache/commons/collections4/map/MultiValueMap.html">MultiValueMap</a>
+	 * @see com.github.ss111.ConfigHelper
+	 * @see ConflictHelper#getConflictingBlocks()
+	 * @see ConflictHelper#getConflictingItems()
+	 */
 	public static Boolean isConflicting(MultiValueMap map, Integer key, String type) {
 		
 		@SuppressWarnings("unchecked")
@@ -48,6 +66,15 @@ public class ConflictHelper {
 		}
 	}
 	
+	/**
+	 * Determines if a block/item is has a conflicting ID.
+	 * @author SS111
+	 * @param map a <a href="http://commons.apache.org/proper/commons-collections/apidocs/org/apache/commons/collections4/map/MultiValueMap.html">MultiValueMap</a> populated by ConfigHelper
+	 * @param key the block/item ID
+	 * @return Boolean
+	 * @see <a href="http://commons.apache.org/proper/commons-collections/apidocs/org/apache/commons/collections4/map/MultiValueMap.html">MultiValueMap</a>
+	 * @see com.github.ss111.ConfigHelper
+	 */
 	public static Boolean isConflicting(MultiValueMap map, Integer key) {
 		
 		@SuppressWarnings("unchecked")
@@ -77,6 +104,15 @@ public class ConflictHelper {
 		}
 	}
 	
+	/**
+	 * Returns the name of the block/item that corresponds to its ID.
+	 * @author SS111
+	 * @param map a <a href="http://commons.apache.org/proper/commons-collections/apidocs/org/apache/commons/collections4/map/MultiValueMap.html">MultiValueMap</a> populated by ConfigHelper
+	 * @param key the block/item ID
+	 * @return String
+	 * @see <a href="http://commons.apache.org/proper/commons-collections/apidocs/org/apache/commons/collections4/map/MultiValueMap.html">MultiValueMap</a>
+	 * @see com.github.ss111.ConfigHelper
+	 */
 	public static String getName(MultiValueMap map, Integer key) {
 		
 		@SuppressWarnings("unchecked")
@@ -94,6 +130,17 @@ public class ConflictHelper {
 		
 	}
 	
+	/**
+	 * Returns a sentence that tells what each block/item conflicts with.
+	 * <p>
+	 * This will only generate a sentence if there is less than 11 conflicts. Otherwise, it just states that there is 10+ conflicts.
+	 * @author SS111
+	 * @param map a <a href="http://commons.apache.org/proper/commons-collections/apidocs/org/apache/commons/collections4/map/MultiValueMap.html">MultiValueMap</a> populated by ConfigHelper
+	 * @param key key the block/item ID
+	 * @return String
+	 * @see <a href="http://commons.apache.org/proper/commons-collections/apidocs/org/apache/commons/collections4/map/MultiValueMap.html">MultiValueMap</a>
+	 * @see com.github.ss111.ConfigHelper
+	 */
 	public static String getConflictString(MultiValueMap map, Integer key) {
 		
 		@SuppressWarnings("unchecked")
@@ -211,6 +258,21 @@ public class ConflictHelper {
 		}
 	}
 	
+	/**
+	 * Returns a sentence that states the configuration files that have conflicts
+	 * <p>
+	 * This is to be used in conjunction with ConfigHelper.getConflictString(MultiValueMap map, Integer key)
+	 * <p>
+	 * This will only generate a sentence if there is less than 11 conflicts. Otherwise, it just states that there is 10+ configuration files.
+	 * @author SS111
+	 * @param map a <a href="http://commons.apache.org/proper/commons-collections/apidocs/org/apache/commons/collections4/map/MultiValueMap.html">MultiValueMap</a> populated by ConfigHelper
+	 * @param key the block/item ID
+	 * @param type the map type (BLOCK or ITEM)
+	 * @return String
+	 * @see <a href="http://commons.apache.org/proper/commons-collections/apidocs/org/apache/commons/collections4/map/MultiValueMap.html">MultiValueMap</a>
+	 * @see com.github.ss111.ConfigHelper
+	 * @see ConifgHelper#getConflictString(MultiValueMap map, Integer key) getConflictString
+	 */
 	public static String getConfigConflictString(MultiValueMap map, Integer key, String type) {
 		
 		@SuppressWarnings("unchecked")
@@ -536,11 +598,21 @@ public class ConflictHelper {
 		}
 	}
 	
+	/**
+	 * Returns an {@link ArrayList} of block IDs that are conflicting.
+	 * @return ArrayList<Integer>
+	 * @see ArrayList
+	 */
 	public static ArrayList<Integer> getConflictingBlocks() {
 		
 		return conflictingBlocks;
 	}
 	
+	/**
+	 * Returns an {@link ArrayList} of item IDs that are conflicting.
+	 * @return ArrayList<Integer>
+	 * @see ArrayList
+	 */
 	public static ArrayList<Integer> getConflictingItems() {
 				
 		return conflictingItems;

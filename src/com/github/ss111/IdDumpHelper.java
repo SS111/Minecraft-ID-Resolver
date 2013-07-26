@@ -9,6 +9,10 @@ import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
+/**
+ * IdDumpHelper is used to help with NEI ID dumps. It's main functionality is the ability to parse NEI ID dumps and extract both the unused block IDs and the unused item IDs.
+ * @author SS111
+ */
 public class IdDumpHelper {
 	
 	private static BufferedReader dumpReader;
@@ -16,6 +20,12 @@ public class IdDumpHelper {
 	private static ArrayList<Integer> unusedItemIDs = new ArrayList<Integer>();
 	private static String dumpLine;
 	
+	/**
+	 * Populates 2 {@link ArrayList}s; one for unused block IDs and one for unused item IDs.
+	 * @author SS111
+	 * @param path path to an NEI ID dump
+	 * @see ArrayList
+	 */
 	public static void populateUnusedIDs(String path) {
 		
 		File idMap = new File(path);
@@ -75,11 +85,23 @@ public class IdDumpHelper {
 		}
 	}
 	
+	/**
+	 * Returns an {@link ArrayList} of unused block IDs.
+	 * @return ArrayList<Integer>
+	 */
 	public static ArrayList<Integer> getUnusedBlockIDs() {
 		
 		return unusedBlockIDs;
 	}
 	
+	/**
+	 * Returns an {@link ArrayList} of unused item IDs.
+	 * <p>
+	 * This will also check to see if the unused items array is empty (indicating that the user forget to dump the unused item IDs) and inform the user.
+	 * @author SS111
+	 * @return ArrayList<Integer>
+	 * @see ArrayList
+	 */
 	public static ArrayList<Integer> getUnusedItemIDs() {
 		
 		if (unusedItemIDs.size() == 0) {
