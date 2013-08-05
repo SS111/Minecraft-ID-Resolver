@@ -167,11 +167,11 @@ MultiValueMap unknownMap = ConfigHelper.getUnknownIDs();
 By iterating through one of these maps, you can then determine if an ID is conflicting or not by doing:
 
 ```java
-for (Object key: myMap) {
+for (Object key : blockMap.keySet()) {
 
 	ID = Integer.valueOf(key.toString());
 
-	if (ConflictHelper.isConflicting(myMap, ID) == true) {
+	if (ConflictHelper.isConflicting(blockMap, ID) == true) {
 	//Optionally, you can also pass the type parameter to automatically store conflicting items in an ArrayList
 	//if (ConflictHelper.isConflicting(blockMap, ID, "BLOCK") == true) {
 
