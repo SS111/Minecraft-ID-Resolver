@@ -40,13 +40,15 @@ public class ConflictHelper {
 		} else {
 			
 			ArrayList<String> namesArray = new ArrayList<String>();
+			ArrayList<String> configArray = new ArrayList<String>();
 			
 			for (ArrayList<String> combo : names) {
 				
 				namesArray.add(combo.toArray()[0].toString());
+				configArray.add(combo.toArray()[1].toString());
 			}
 			
-			if (namesArray.toArray()[0].toString().equals(namesArray.toArray()[1].toString())) {
+			if (namesArray.toArray()[0].toString().equals(namesArray.toArray()[1].toString()) || configArray.toArray()[0].toString().equals(configArray.toArray()[1].toString())) {
 				
 				return false;
 				
