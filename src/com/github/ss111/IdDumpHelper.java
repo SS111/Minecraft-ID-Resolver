@@ -107,10 +107,10 @@ public class IdDumpHelper {
 		if (unusedItemIDs.size() == 0) {
 			
 			JOptionPane.showMessageDialog(null, "There are no unused item IDs. Are you sure you dumped them? The program cannot continue and will now close.", "Information", JOptionPane.ERROR_MESSAGE);
+			
+			WindowMain.frmMain.dispose();
 		}
-		
-		WindowMain.frmMain.dispose();
-		
+				
 		return unusedItemIDs;
 	}
 
