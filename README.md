@@ -8,9 +8,7 @@ Welcome! I have created a tool which I believe both normal users and modpack cre
 2. Search for conflicts
 3. Manually resolve conflicts by using the list of conflicts the program provides
 
-Please note that the unknown IDs tab is an attempt to support unsupported configuration files (aka any non-forge configuration file) and is **most likely always** going to be a false positive. Because of this, this tool *will not* attempt to resolve unknown ID conflicts.
-
-or, to resolve ID conflicts automatically
+Or if you want to resolve ID conflicts automatically,
 
 1. Select the configuration directory
 2. Search for conflicts
@@ -174,9 +172,11 @@ This will populate [MultiValueMap](http://commons.apache.org/proper/commons-coll
 
 It can be visualized somewhat like this:
 
-> Key: 1337
->
-> Value(s): ["awesomeBlock", "awesomeConfig.cfg"], ["conflictingBlock", otherConfig.cfg"]
+```
+Key: 1337
+
+Value(s): ["awesomeBlock", "awesomeConfig.cfg"], ["conflictingBlock", otherConfig.cfg"]
+```
 
 So, the ID 1337 has 2 (in this case) blocks mapped to it.
 
