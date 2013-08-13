@@ -254,14 +254,7 @@ public class ConfigHelper {
 	 */
 	public static String getPrettyName(String input) {
 		
-		if (input.contains("\\")) {
-			
-			return input.substring(input.lastIndexOf("\\") + 1);
-			
-		} else {
-			
-			return input.substring(input.lastIndexOf("/") + 1);
-		}
+		return input.substring(input.lastIndexOf(File.separator) + 1);
 	}
 	
 	/**
