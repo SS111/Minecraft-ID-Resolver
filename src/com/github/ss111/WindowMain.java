@@ -31,6 +31,7 @@ import com.martiansoftware.jsap.FlaggedOption;
 import com.martiansoftware.jsap.JSAP;
 import com.martiansoftware.jsap.JSAPException;
 import com.martiansoftware.jsap.JSAPResult;
+import java.awt.BorderLayout;
 
 public class WindowMain {
 	
@@ -308,11 +309,10 @@ public class WindowMain {
 	private void initialize() {
 		
 		frmMain = new JFrame();
-		frmMain.setResizable(false);
 		frmMain.setTitle("Minecraft ID Resolver V1.0.4 - By SS111");
 		frmMain.setBounds(100, 100, 450, 345);
 		frmMain.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frmMain.getContentPane().setLayout(new MigLayout("", "[95px][10px][210px,grow][10px][99px]", "[23px][23px][179px][][][]"));
+		frmMain.getContentPane().setLayout(new MigLayout("", "[95px][10px][210px,grow][10px][99px]", "[23px][23px][179px][grow][][]"));
 		
 		JLabel lblConfigDirectory = new JLabel("Config directory:");
 		
@@ -538,18 +538,18 @@ public class WindowMain {
 		JScrollPane scrollPaneUnknown = new JScrollPane(listUnknown);
 				
 		JPanel panelBlocks = new JPanel();
-		panelBlocks.setLayout(new MigLayout("", "[417px]", "[160px]"));
-		panelBlocks.add(scrollPaneBlocks, "cell 0 0,grow");
+		panelBlocks.setLayout(new BorderLayout(0, 0));
+		panelBlocks.add(scrollPaneBlocks);
 		panelBlocks.setOpaque(false);
 		
 		JPanel panelItems = new JPanel();
-		panelItems.setLayout(new MigLayout("", "[407px]", "[132px]"));
-		panelItems.add(scrollPaneItems, "cell 0 0,grow");
+		panelItems.setLayout(new BorderLayout(0, 0));
+		panelItems.add(scrollPaneItems);
 		panelItems.setOpaque(false);
 		
 		JPanel panelUnknown = new JPanel();
-		panelUnknown.setLayout(new MigLayout("", "[407px]", "[132px]"));
-		panelUnknown.add(scrollPaneUnknown, "cell 0 0,grow");
+		panelUnknown.setLayout(new BorderLayout(0, 0));
+		panelUnknown.add(scrollPaneUnknown);
 		panelUnknown.setOpaque(false);
 		
 		tabbedPaneIDs = new JTabbedPane(JTabbedPane.TOP);
