@@ -25,12 +25,36 @@ or, to resolve ID conflicts automatically
 4. Allow the program to resolve conflicts automatically
 
 If for whatever reason your configuration is messed up afterwards, there will be a backup in your .minecraft directory named config_bak.
+- - -
+As of version 1.0.5, there is now command line support. The basic usage goes as follows:
+
+```
+Usage: java -jar Minecraft.ID.Resolver.v1.0.5.jar
+                (-c|--config) <config dir> (-n|--dump) <nei id dump> [(-s|--show) <show conflicts>]
+
+  (-c|--config) <config dir>
+        The path to the Minecraft configuration directory.
+
+  (-n|--dump) <nei id dump>
+        The path to the NEI ID dump file.
+
+  [(-s|--show) <show conflicts>]
+        Requests that conflicts be displayed before being resolved. (default: false)
+```
+
+Also, do note that the -s argument is not necessary unless you want to set it to true, in which case the conflicts will be displayed and you will be asked if you want to resolve them, rather than them being resolved without user input.
+
+A basic example also goes as follows:
+
+```
+java -jar Minecraft.ID.Resolver.v.1.0.5.jar -c C:\Users\Bob\AppData\Roaming\.minecraft\config\ -n C:\Users\Bob\AppData\Roaming\.minecraft\dump.txt
+```
 
 #Building from source
 
 If you just want a stable build, grab the latest version from the [releases page](https://github.com/SS111/Minecraft-ID-Resolver/releases).
 
-However, if you want the bleeding edge build first clone the repository. Then you are going to need to add [MiG Layout](http://www.miglayout.com/), [Apache Commons Collections](http://commons.apache.org/proper/commons-collections/), and [Appache Commons IO](http://commons.apache.org/proper/commons-io/) to the build path. Finally, make sure that the classpath is set to WindowMain and then compile.
+However, if you want the bleeding edge build first clone the repository. Then you are going to need to add [MiG Layout](http://www.miglayout.com/), [Apache Commons Collections](http://commons.apache.org/proper/commons-collections/), [Appache Commons IO](http://commons.apache.org/proper/commons-io/), and [JSAP](http://www.martiansoftware.com/jsap/) to the build path. Finally, make sure that the classpath is set to WindowMain and then compile.
 
 #Contributing
 
