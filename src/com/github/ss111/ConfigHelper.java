@@ -105,7 +105,7 @@ public class ConfigHelper {
 							continue;
 							
 							//& or &&?
-						} else if (configLine.contains("I:") & blockComingUp == false & itemComingUp == false) {
+						} else if (configLine.contains("I:") & configLine.matches(".*\\d.*") & blockComingUp == false & itemComingUp == false) {
 							
 							if (configLine.contains("block") || configLine.contains("Block") || configLine.contains("BLOCK") || configLine.contains("item") || configLine.contains("Item") || configLine.contains("ITEM")) {
 								
