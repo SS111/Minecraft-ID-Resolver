@@ -43,7 +43,7 @@ public class ConfigHelper {
 		
 		for (File configFile : configFiles) {
 			
-			if (configFile.isFile() & configFile.getAbsolutePath().contains(".cfg") || configFile.getAbsolutePath().contains(".txt")) {
+			if (configFile.isFile() & configFile.getAbsolutePath().contains(".cfg") || configFile.getAbsolutePath().contains(".txt") || configFile.getAbsolutePath().contains(".conf")) {
 				
 				try {
 					
@@ -148,7 +148,7 @@ public class ConfigHelper {
 				
 				for (File configFile : configFilesDir) {
 					
-					if (configFile.isFile() & configFile.getAbsolutePath().contains(".cfg") || configFile.getAbsolutePath().contains(".txt")) {
+					if (configFile.isFile() & configFile.getAbsolutePath().contains(".cfg") || configFile.getAbsolutePath().contains(".txt") || configFile.getAbsolutePath().contains(".conf")) {
 						
 						try {
 							
