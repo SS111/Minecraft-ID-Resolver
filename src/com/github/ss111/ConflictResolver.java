@@ -50,7 +50,7 @@ public class ConflictResolver {
 			
 			ArrayList<String> lines = new ArrayList<String>();
 			
-			if (configFile.isFile() & configFile.getAbsolutePath().contains(".cfg") || configFile.getAbsolutePath().contains(".txt")) {
+			if (configFile.isFile() & configFile.getAbsolutePath().contains(".cfg") || configFile.getAbsolutePath().contains(".txt") || configFile.getAbsolutePath().contains(".conf")) {
 				
 				try {
 					
@@ -195,7 +195,7 @@ public class ConflictResolver {
 					
 					ArrayList<String> lines = new ArrayList<String>();
 					
-					if (configFile.isFile() & configFile.getAbsolutePath().contains(".cfg") || configFile.getAbsolutePath().contains(".txt")) {
+					if (configFile.isFile() & configFile.getAbsolutePath().contains(".cfg") || configFile.getAbsolutePath().contains(".txt") || configFile.getAbsolutePath().contains(".conf")) {
 						
 						try {
 							
