@@ -135,24 +135,18 @@ public class ConfigHelper {
 
 					e.printStackTrace();
 				}
-			}	
-		}
-		
-		File[] configDirectories = configDirectory.listFiles();
-		
-		for (File configDir : configDirectories) {
-			
-			if (configDir.isDirectory()) {
 				
-				File[] configFilesDir = configDir.listFiles();
+			} else if (configFile.isDirectory()) {
 				
-				for (File configFile : configFilesDir) {
+				File[] configFilesDir1 = configFile.listFiles();
+				
+				for (File configFile1 : configFilesDir1) {
 					
-					if (configFile.isFile() & configFile.getAbsolutePath().contains(".cfg") || configFile.getAbsolutePath().contains(".txt") || configFile.getAbsolutePath().contains(".conf")) {
+					if (configFile1.isFile() & configFile1.getAbsolutePath().contains(".cfg") || configFile1.getAbsolutePath().contains(".txt") || configFile1.getAbsolutePath().contains(".conf")) {
 						
 						try {
 							
-							configReader = new BufferedReader(new FileReader(configFile.getAbsolutePath()));
+							configReader = new BufferedReader(new FileReader(configFile1.getAbsolutePath()));
 							
 						} catch (FileNotFoundException e) {
 							
@@ -192,7 +186,7 @@ public class ConfigHelper {
 									
 									ArrayList<String> blockAndConfig = new ArrayList<String>();
 									blockAndConfig.add(blockNameSplit[0].replace("I:", "").replace(" ", "").replace("\"", ""));
-									blockAndConfig.add(getPrettyName(configFile.getAbsolutePath()));
+									blockAndConfig.add(getPrettyName(configFile1.getAbsolutePath()));
 									
 									blockIDs.put(Integer.valueOf(configLine.substring(configLine.lastIndexOf("=") + 1)), blockAndConfig);
 									continue;
@@ -203,7 +197,7 @@ public class ConfigHelper {
 									
 									ArrayList<String> itemAndConfig = new ArrayList<String>();
 									itemAndConfig.add(itemNameSplit[0].replace("I:", "").replace(" ", "").replace("\"", ""));
-									itemAndConfig.add(getPrettyName(configFile.getAbsolutePath()));
+									itemAndConfig.add(getPrettyName(configFile1.getAbsolutePath()));
 									
 									itemIDs.put(Integer.valueOf(configLine.substring(configLine.lastIndexOf("=") + 1)), itemAndConfig);
 									continue;
@@ -217,7 +211,7 @@ public class ConfigHelper {
 										
 										ArrayList<String> unknownAndConfig = new ArrayList<String>();
 										unknownAndConfig.add(nameSplit[0].replace("I:", "").replace(" ", "").replace("\"", ""));
-										unknownAndConfig.add(getPrettyName(configFile.getAbsolutePath()));
+										unknownAndConfig.add(getPrettyName(configFile1.getAbsolutePath()));
 										
 										unknownIDs.put(Integer.valueOf(configLine.substring(configLine.lastIndexOf("=") + 1)), unknownAndConfig);
 										continue;
@@ -238,6 +232,106 @@ public class ConfigHelper {
 						} catch (IOException e) {
 
 							e.printStackTrace();
+						}
+						
+					} else if (configFile1.isDirectory()) {
+						
+						File[] configFilesDir2 = configFile1.listFiles();
+						
+						for (File configFile2 : configFilesDir2) {
+							
+							if (configFile2.isFile() & configFile2.getAbsolutePath().contains(".cfg") || configFile2.getAbsolutePath().contains(".txt") || configFile2.getAbsolutePath().contains(".conf")) {
+								
+								try {
+									
+									configReader = new BufferedReader(new FileReader(configFile2.getAbsolutePath()));
+									
+								} catch (FileNotFoundException e) {
+									
+									e.printStackTrace();
+								}
+								
+								try {
+									
+									while ((configLine = configReader.readLine()) != null) {
+										
+										if (configLine == null) {
+											
+											continue;
+											
+										} else if (configLine.contains("}") && blockComingUp == true) {
+										
+											blockComingUp = false;
+											continue;
+											
+										} else if (configLine.contains("}") && itemComingUp == true) {
+										
+											itemComingUp = false;
+											continue;
+											
+										} else if (configLine.equals("# block")) {
+											
+											blockComingUp = true;
+											continue;
+											
+										} else if (configLine.equals("# item")) {
+											
+											itemComingUp = true;
+											
+										} else if (configLine.contains("I:") && blockComingUp == true) {
+											
+											String[] blockNameSplit = configLine.split("=");
+											
+											ArrayList<String> blockAndConfig = new ArrayList<String>();
+											blockAndConfig.add(blockNameSplit[0].replace("I:", "").replace(" ", "").replace("\"", ""));
+											blockAndConfig.add(getPrettyName(configFile2.getAbsolutePath()));
+											
+											blockIDs.put(Integer.valueOf(configLine.substring(configLine.lastIndexOf("=") + 1)), blockAndConfig);
+											continue;
+											
+										} else if (configLine.contains("I:") && itemComingUp == true) {
+											
+											String[] itemNameSplit = configLine.split("=");
+											
+											ArrayList<String> itemAndConfig = new ArrayList<String>();
+											itemAndConfig.add(itemNameSplit[0].replace("I:", "").replace(" ", "").replace("\"", ""));
+											itemAndConfig.add(getPrettyName(configFile2.getAbsolutePath()));
+											
+											itemIDs.put(Integer.valueOf(configLine.substring(configLine.lastIndexOf("=") + 1)), itemAndConfig);
+											continue;
+											
+											//& or &&?
+										} else if (configLine.contains("I:") & blockComingUp == false & itemComingUp == false) {
+											
+											if (configLine.contains("block") || configLine.contains("Block") || configLine.contains("BLOCK") || configLine.contains("item") || configLine.contains("Item") || configLine.contains("ITEM")) {
+												
+												String[] nameSplit = configLine.split("=");
+												
+												ArrayList<String> unknownAndConfig = new ArrayList<String>();
+												unknownAndConfig.add(nameSplit[0].replace("I:", "").replace(" ", "").replace("\"", ""));
+												unknownAndConfig.add(getPrettyName(configFile2.getAbsolutePath()));
+												
+												unknownIDs.put(Integer.valueOf(configLine.substring(configLine.lastIndexOf("=") + 1)), unknownAndConfig);
+												continue;
+												
+											} else {
+												
+												continue;
+											}
+											
+										} else {
+											
+											continue;
+										}
+									}
+									
+									configReader.close();
+									
+								} catch (IOException e) {
+
+									e.printStackTrace();
+								}
+							}
 						}
 					}
 				}
