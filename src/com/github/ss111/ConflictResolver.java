@@ -48,7 +48,7 @@ public class ConflictResolver {
 		
 		for (File configFile : configFiles) {
 			
-			ArrayList<String> lines = new ArrayList<String>(2000);
+			ArrayList<String> lines = new ArrayList<String>();
 			
 			if (configFile.isFile() & configFile.getAbsolutePath().contains(".cfg") || configFile.getAbsolutePath().contains(".txt")) {
 				
@@ -193,7 +193,7 @@ public class ConflictResolver {
 				
 				for (File configFile : configFilesDir) {
 					
-					ArrayList<String> lines = new ArrayList<String>(2000);
+					ArrayList<String> lines = new ArrayList<String>();
 					
 					if (configFile.isFile() & configFile.getAbsolutePath().contains(".cfg") || configFile.getAbsolutePath().contains(".txt")) {
 						
@@ -329,5 +329,4 @@ public class ConflictResolver {
 			}
 		}
 	}
-
 }
