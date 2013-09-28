@@ -445,6 +445,7 @@ public class WindowMain {
 							listModelBlocks.addElement(getColoredString(ConflictHelper.getConfigConflictString(ConfigHelper.getBlockIDs(), ID, "BLOCK")));
 							conflicts++;
 							
+							
 						} else {
 							
 							listModelBlocks.addElement("Block ID: " + ID + " | " + "Block name: " + ConflictHelper.getName(ConfigHelper.getBlockIDs(), ID));
@@ -491,11 +492,17 @@ public class WindowMain {
     					} else {
     						
     						listModelUnknown.addElement("ID: " + ID + " | " + "Name: " + ConflictHelper.getName(ConfigHelper.getUnknownIDs(), ID));
+    						
     					}
     				}
                 }
                 
+                SortingHelper.sortListModel(listModelBlocks);
+                SortingHelper.sortListModel(listModelItems);
+                SortingHelper.sortListModel(listModelUnknown);
+                 
                 btnSearch.setText("Done!");
+                
                 
                 if (conflicts == 0) {
                 	
