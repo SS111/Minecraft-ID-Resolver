@@ -133,8 +133,7 @@ public class WindowMain {
 						
 						if (ConflictHelper.isConflicting(ConfigHelper.getBlockIDs(), ID, "BLOCK") == true) {
 							
-							System.out.println(ConflictHelper.getConflictString(ConfigHelper.getBlockIDs(), ID));
-							System.out.println(ConflictHelper.getConfigConflictString(ConfigHelper.getBlockIDs(), ID, "BLOCK"));
+							System.out.println("Block ID: " + ID + " | " + ConflictHelper.getConflictString(ConfigHelper.getBlockIDs(), ID) + " " + ConflictHelper.getConfigConflictString(ConfigHelper.getBlockIDs(), ID));
 							System.out.println("");
 							
 						}
@@ -150,8 +149,7 @@ public class WindowMain {
 						
 						if (ConflictHelper.isConflicting(ConfigHelper.getItemIDs(), ID, "ITEM") == true) {
 							
-							System.out.println(ConflictHelper.getConflictString(ConfigHelper.getItemIDs(), ID));
-							System.out.println(ConflictHelper.getConfigConflictString(ConfigHelper.getItemIDs(), ID, "ITEM"));
+							System.out.println("Item ID: " + ID + " | " + ConflictHelper.getConflictString(ConfigHelper.getItemIDs(), ID) + " " + ConflictHelper.getConfigConflictString(ConfigHelper.getItemIDs(), ID));
 							System.out.println("");
 							
 						}
@@ -167,8 +165,7 @@ public class WindowMain {
 						
 						if (ConflictHelper.isConflicting(ConfigHelper.getUnknownIDs(), ID) == true) {
 							
-							System.out.println(ConflictHelper.getConflictString(ConfigHelper.getUnknownIDs(), ID));
-							System.out.println(ConflictHelper.getConfigConflictString(ConfigHelper.getUnknownIDs(), ID, "UNKNOWN"));
+							System.out.println("ID: " + ID + " | " + ConflictHelper.getConflictString(ConfigHelper.getUnknownIDs(), ID) + " " + ConflictHelper.getConfigConflictString(ConfigHelper.getUnknownIDs(), ID));
 							System.out.println("");
 							
 						}
@@ -441,8 +438,7 @@ public class WindowMain {
 						
 						if (ConflictHelper.isConflicting(ConfigHelper.getBlockIDs(), ID, "BLOCK") == true) {
 							
-							listModelBlocks.addElement(getColoredString("Block ID: " + ID + " | " + ConflictHelper.getConflictString(ConfigHelper.getBlockIDs(), ID)));
-							listModelBlocks.addElement(getColoredString(ConflictHelper.getConfigConflictString(ConfigHelper.getBlockIDs(), ID, "BLOCK")));
+							listModelBlocks.addElement(getColoredString("Block ID: " + ID + " | " + ConflictHelper.getConflictString(ConfigHelper.getBlockIDs(), ID) + " " + ConflictHelper.getConfigConflictString(ConfigHelper.getBlockIDs(), ID)));
 							conflicts++;
 							
 							
@@ -463,8 +459,7 @@ public class WindowMain {
 						
 						if (ConflictHelper.isConflicting(ConfigHelper.getItemIDs(), ID, "ITEM") == true) {
 							
-							listModelItems.addElement(getColoredString("Item ID: " + ID + " | " + ConflictHelper.getConflictString(ConfigHelper.getItemIDs(), ID)));
-							listModelItems.addElement(getColoredString(ConflictHelper.getConfigConflictString(ConfigHelper.getItemIDs(), ID, "ITEM")));
+							listModelItems.addElement(getColoredString("Item ID: " + ID + " | " + ConflictHelper.getConflictString(ConfigHelper.getItemIDs(), ID) + " " + ConflictHelper.getConfigConflictString(ConfigHelper.getItemIDs(), ID)));
 							conflicts++;
 							
 						} else {
@@ -485,8 +480,7 @@ public class WindowMain {
     					
     					if (ConflictHelper.isConflicting(ConfigHelper.getUnknownIDs(), ID, "UNKNOWN") == true) {
     						
-    						listModelUnknown.addElement(getColoredString("ID: " + ID + " | " + ConflictHelper.getConflictString(ConfigHelper.getUnknownIDs(), ID)));
-    						listModelUnknown.addElement(getColoredString(ConflictHelper.getConfigConflictString(ConfigHelper.getUnknownIDs(), ID, "UNKNOWN")));
+							listModelUnknown.addElement(getColoredString("ID: " + ID + " | " + ConflictHelper.getConflictString(ConfigHelper.getUnknownIDs(), ID) + " " + ConflictHelper.getConfigConflictString(ConfigHelper.getUnknownIDs(), ID)));
     						conflicts++;
     						
     					} else {

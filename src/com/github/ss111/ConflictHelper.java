@@ -167,7 +167,7 @@ public class ConflictHelper {
 				
 			} else if (i == names.size()) {
 				
-				conflictString = conflictString + namesArray.toArray()[i - 1];
+				conflictString = conflictString + namesArray.toArray()[i - 1] + ".";
 				
 				
 			} else {
@@ -192,7 +192,7 @@ public class ConflictHelper {
 	 * @see com.github.ss111.ConfigHelper
 	 * @see ConifgHelper#getConflictString(MultiValueMap map, Integer key) getConflictString
 	 */
-	public static String getConfigConflictString(MultiValueMap map, Integer key, String type) {
+	public static String getConfigConflictString(MultiValueMap map, Integer key) {
 		
 		@SuppressWarnings("unchecked")
 		Collection<ArrayList<String>> names = map.getCollection(key);
