@@ -9,6 +9,8 @@ import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
+import org.apache.commons.io.FilenameUtils;
+
 /**
  * IdDumpHelper is used to help with NEI ID dumps. It's main functionality is the ability to parse NEI ID dumps and extract both the unused block IDs and the unused item IDs.
  * @author SS111
@@ -30,60 +32,109 @@ public class IdDumpHelper {
 		
 		File idMap = new File(path);
 		
-		try {
-			
-			dumpReader = new BufferedReader(new FileReader(idMap));
-			
-		} catch (FileNotFoundException e) {
-			
-			e.printStackTrace();
-		}
+		if (FilenameUtils.getExtension(path).equals("txt")) {
 		
-		try {
-			
-			while ((dumpLine = dumpReader.readLine()) != null) {
+			try {
 				
-				if (dumpLine == null) {
+				dumpReader = new BufferedReader(new FileReader(idMap));
+				
+			} catch (FileNotFoundException e) {
+				
+				e.printStackTrace();
+			}
+			
+			try {
+				
+				while ((dumpLine = dumpReader.readLine()) != null) {
 					
-					continue;
-					
-				} else if (dumpLine.contains("Name:")) {
-					
-					continue;
-					
-				} else if (dumpLine.contains("Block")) {
+					if (dumpLine == null) {
 						
-						if (Integer.valueOf(dumpLine.replace("Block. ", "").replace("Unused ID: ", "")) <= 421) {
+						continue;
+						
+					} else if (dumpLine.contains("Name:")) {
+						
+						continue;
+						
+					} else if (dumpLine.contains("Block")) {
+							
+							if (Integer.valueOf(dumpLine.replace("Block. ", "").replace("Unused ID: ", "")) <= 422) {
+								
+								continue;
+								
+							} else {
+								
+								unusedBlockIDs.add(Integer.valueOf(dumpLine.replace("Block. ", "").replace("Unused ID: ", "")));
+								continue;
+							}
+							
+					} else {
+						
+						if (Integer.valueOf(dumpLine.replace("Item. ", "").replace("Unused ID: ", "")) <= 422) {
 							
 							continue;
 							
 						} else {
 							
-							unusedBlockIDs.add(Integer.valueOf(dumpLine.replace("Block. ", "").replace("Unused ID: ", "")));
+							unusedItemIDs.add(Integer.valueOf(dumpLine.replace("Item. ", "").replace("Unused ID: ", "")));
 							continue;
 						}
-						
-				} else {
-					
-					if (Integer.valueOf(dumpLine.replace("Item. ", "").replace("Unused ID: ", "")) <= 421) {
-						
-						continue;
-						
-					} else {
-						
-						unusedItemIDs.add(Integer.valueOf(dumpLine.replace("Item. ", "").replace("Unused ID: ", "")));
-						continue;
 					}
 				}
+							
+				dumpReader.close();
+				
+			} catch (IOException e) {
+				
+				e.printStackTrace();
 			}
-						
-			dumpReader.close();
-			
-		} catch (IOException e) {
-			
-			e.printStackTrace();
 		}
-	}
+		
+		else {
+			
+			try {
+				
+				dumpReader = new BufferedReader(new FileReader(idMap));
+				
+			} catch (FileNotFoundException e) {
+				
+				e.printStackTrace();
+			}
+			
+			
+			try {
+				
+				while ((dumpLine = dumpReader.readLine()) != null) {
+					
+					if (dumpLine == null) {
+						
+						continue;
+						
+					} else if (dumpLine.contains("null,null") && dumpLine != "0,null,null,null,null") {
+						
+						if (Integer.valueOf(dumpLine.split(",")[0]) <= 422)
+						{
+							continue;
+							
+						} else {
+							
+							if (Integer.valueOf(dumpLine.split(",")[0]) <= 4095) {
+								
+								unusedBlockIDs.add(Integer.valueOf(dumpLine.split(",")[0]));
+								
+							} else {
+								
+								unusedItemIDs.add(Integer.valueOf(dumpLine.split(",")[0]));
+							}
+						}
+					}
+				}
+				
+			} catch (IOException e) {
+				
+				e.printStackTrace();
+			}
+		}
+	}	
 	
 	/**
 	 * Returns an {@link ArrayList} of unused block IDs.

@@ -365,7 +365,7 @@ public class WindowMain {
 				
 				JFileChooser dumpChooser = new JFileChooser();
 				
-				FileNameExtensionFilter filter = new FileNameExtensionFilter("NEI ID Dump", "txt");
+				FileNameExtensionFilter filter = new FileNameExtensionFilter("NEI ID Dump", "txt", "csv");
 				
 				dumpChooser.setFileFilter(filter);
 				dumpChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
