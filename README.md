@@ -23,7 +23,7 @@ Or if you want to resolve ID conflicts automatically,
  6. Click "Block/Item ID Settings"
  7. Make sure that item IDs are dumped! It **will not** dump item IDs by default!
  8. Click "Dump ID Map Now". This will dump the ID map to your .minecraft folder. Now just browse to the file when asked to provide a NEI ID dump.
- 9. **For Minecraft 1.6.4 and above:**
+ 9. **For Minecraft 1.6.2 and above:**
  10. Start Minecraft with NEI installed
  11. Open any world
  12. Open your inventory
