@@ -90,7 +90,7 @@ public class WindowMain {
 	            }
 				
 	            System.err.println("");
-				System.err.println("Usage: java -jar Minecraft.ID.Resolver.v1.0.6.jar ");
+				System.err.println("Usage: java -jar Minecraft.ID.Resolver.v1.0.7.jar ");
 				System.err.println("                " + argsParser.getUsage());
 				System.err.println("");
 				System.err.println(argsParser.getHelp());
@@ -99,7 +99,7 @@ public class WindowMain {
 			}
 			
 			System.out.println("");
-			System.out.println("Minecraft ID Resolver v1.0.6 - By SS111");
+			System.out.println("Minecraft ID Resolver v1.0.7 - By SS111");
 			System.out.println("Console mode activated.");
 			System.out.println("");
 			System.out.print("\rValidating arguments...");
@@ -306,7 +306,7 @@ public class WindowMain {
 	private void initialize() {
 		
 		frmMain = new JFrame();
-		frmMain.setTitle("Minecraft ID Resolver V1.0.6 - By SS111");
+		frmMain.setTitle("Minecraft ID Resolver V1.0.7 - By SS111");
 		frmMain.setBounds(100, 100, 450, 345);
 		frmMain.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmMain.getContentPane().setLayout(new MigLayout("", "[95px][10px][210px,grow][10px][99px]", "[23px][23px][179px][grow][][]"));
