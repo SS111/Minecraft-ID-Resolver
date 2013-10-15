@@ -1,8 +1,7 @@
 #Minecraft ID Resolver - A modpack creators best friend!
-
 Welcome! I have created a tool which I believe both normal users and modpack creators will be able to utilize. It is written in Java and therefore will work on every OS and is designed to find and fix Minecraft ID conflicts.
 
-#Usage
+##Usage
 
 1. Select the configuration directory
 2. Search for conflicts
@@ -14,24 +13,24 @@ Or if you want to resolve ID conflicts automatically,
 
 1. Select the configuration directory
 2. Search for conflicts
-3. Provide an [NEI](http://www.minecraftforum.net/topic/909223-147152-smp-chickenbones-mods/) ID dump
- 1. **For Minecraft 1.5.2 and below:** 
- 2. Start Minecraft with NEI installed
- 3. Open any world
- 4. Open your inventory
- 5. Click "Options"
- 6. Click "Block/Item ID Settings"
- 7. Make sure that item IDs are dumped! It **will not** dump item IDs by default!
- 8. Click "Dump ID Map Now". This will dump the ID map to your .minecraft folder. Now just browse to the file when asked to provide a NEI ID dump.
- 9. **For Minecraft 1.6.2 and above:**
- 10. Start Minecraft with NEI installed
- 11. Open any world
- 12. Open your inventory
- 13. Click "Options"
- 14. Click "Tools"
- 15. Click "Data Dumps"
- 16. Make sure that all the block/item IDs or the free block/item IDs are dumped! **Do not** dump the already used IDs!
- 17. Click "Dump". This will dump the ID map to your .minecraft/dumps folder. Now just browse to the file when asked to provide a NEI ID dump.
+3. Provide an [NEI](http://www.minecraftforum.net/topic/909223-147152-smp-chickenbones-mods/) ID dump     
+    1. **For Minecraft 1.5.2 and below:** 
+        2. Start Minecraft with NEI installed
+        3. Open any world
+        4. Open your inventory
+        5. Click "Options"
+        6. Click "Block/Item ID Settings"
+        7. Make sure that item IDs are dumped! It **will not** dump item IDs by default!
+        8. Click "Dump ID Map Now". This will dump the ID map to your ``.minecraft`` folder. Now just browse to the file when asked to provide a NEI ID dump.   
+    2. **For Minecraft 1.6.2 and above:**
+        1. Start Minecraft with NEI installed
+        2. Open any world
+        3. Open your inventory
+        4. Click "Options"
+        5. Click "Tools"
+        6. Click "Data Dumps"
+        7. Make sure that all the block/item IDs or the free block/item IDs are dumped! **Do not** dump the already used IDs!
+        8. Click "Dump". This will dump the ID map to your ``.minecraft/dumps`` folder. Now just browse to the file when asked to provide a NEI ID dump.
 4. Allow the program to resolve conflicts automatically
 
 If for whatever reason your configuration is messed up afterwards, there will be a backup in your .minecraft directory named config_bak.
@@ -60,13 +59,13 @@ A basic example also goes as follows:
 java -jar Minecraft.ID.Resolver.v.1.0.5.jar -c C:\Users\Bob\AppData\Roaming\.minecraft\config\ -n C:\Users\Bob\AppData\Roaming\.minecraft\dump.txt
 ```
 
-#Building from source
+##Building from source
 
 If you just want a stable build, grab the latest version from the [releases page](https://github.com/SS111/Minecraft-ID-Resolver/releases).
 
 However, if you want the bleeding edge build first clone the repository. Then you are going to need to add [MiG Layout](http://www.miglayout.com/), [Apache Commons Collections](http://commons.apache.org/proper/commons-collections/), [Appache Commons IO](http://commons.apache.org/proper/commons-io/), and [JSAP](http://www.martiansoftware.com/jsap/) to the build path. Finally, make sure that the classpath is set to WindowMain and then compile.
 
-#Contributing
+##Contributing
 
 Contributing is a great way to help me and the community out. Everything helps!
 
@@ -107,7 +106,7 @@ not
 ```java
 public static void foo()
 {
-	return bar;
+    return bar;
 }
 ```
 
@@ -170,7 +169,7 @@ if (foo==bar) {
 
 * Just be smart and look at some of my code if you have a question
 
-#Using my code in your program
+##Using my code in your program
 
 If you want to use my code in your program, that's great! I do ask that you **please** give me credit. To start off, your going to need to add [Apache Commons Collections](http://commons.apache.org/proper/commons-collections/), and [Appache Commons IO](http://commons.apache.org/proper/commons-io/) to your build path. Then you can add [my developer jar](../master/dev/midr-1.0.7.jar) to your build path. From there, my "libraries" are pretty straightforward (most of the time...), but I've still included a (poorly written) Javadoc which is avliable [here](http://ss111.github.io/midr-doc/). In addition, below is a basic example of how to find and resolve ID conflicts.
 
@@ -239,7 +238,7 @@ Finally, to resolve the conflicts it's as easy as calling:
 ConflictResolver.resolveConflicts("/path/to/configuration/directory", IdDumpHelper.getUnusedBlockIDs(), IdDumpHelper.getUnusedItemIDs(), ConflictHelper.getConflictingBlocks(), ConflictHelper.getConflictingItems());
 ```
 
-#License
+##License
 
 This software is licensed under the [GNU General Public License v3](http://www.gnu.org/licenses/gpl-3.0.html).
 
