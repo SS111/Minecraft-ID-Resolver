@@ -14,24 +14,24 @@ Or if you want to resolve ID conflicts automatically,
 
 1. Select the configuration directory
 2. Search for conflicts
-3. Provide an [NEI](http://www.minecraftforum.net/topic/909223-147152-smp-chickenbones-mods/) ID dump
- 1. **For Minecraft 1.5.2 and below:** 
- 2. Start Minecraft with NEI installed
- 3. Open any world
- 4. Open your inventory
- 5. Click "Options"
- 6. Click "Block/Item ID Settings"
- 7. Make sure that item IDs are dumped! It **will not** dump item IDs by default!
- 8. Click "Dump ID Map Now". This will dump the ID map to your .minecraft folder. Now just browse to the file when asked to provide a NEI ID dump.
- 9. **For Minecraft 1.6.2 and above:**
- 10. Start Minecraft with NEI installed
- 11. Open any world
- 12. Open your inventory
- 13. Click "Options"
- 14. Click "Tools"
- 15. Click "Data Dumps"
- 16. Make sure that all the block/item IDs or the free block/item IDs are dumped! **Do not** dump the already used IDs!
- 17. Click "Dump". This will dump the ID map to your .minecraft/dumps folder. Now just browse to the file when asked to provide a NEI ID dump.
+3. Provide an [NEI](http://www.minecraftforum.net/topic/909223-147152-smp-chickenbones-mods/) ID dump     
+    1. **For Minecraft 1.5.2 and below:** 
+        2. Start Minecraft with NEI installed
+        3. Open any world
+        4. Open your inventory
+        5. Click "Options"
+        6. Click "Block/Item ID Settings"
+        7. Make sure that item IDs are dumped! It **will not** dump item IDs by default!
+        8. Click "Dump ID Map Now". This will dump the ID map to your ``.minecraft`` folder. Now just browse to the file when asked to provide a NEI ID dump.   
+    2. **For Minecraft 1.6.2 and above:**
+        1. Start Minecraft with NEI installed
+        2. Open any world
+        3. Open your inventory
+        4. Click "Options"
+        5. Click "Tools"
+        6. Click "Data Dumps"
+        7. Make sure that all the block/item IDs or the free block/item IDs are dumped! **Do not** dump the already used IDs!
+        8. Click "Dump". This will dump the ID map to your ``.minecraft/dumps`` folder. Now just browse to the file when asked to provide a NEI ID dump.
 4. Allow the program to resolve conflicts automatically
 
 If for whatever reason your configuration is messed up afterwards, there will be a backup in your .minecraft directory named config_bak.
