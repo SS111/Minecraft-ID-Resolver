@@ -82,7 +82,7 @@ public class ConfigHelper {
 							itemComingUp = true;
 							continue;
 							
-						} else if (configLine.contains("I:") && blockComingUp == true) {
+						} else if (configLine.contains("I:") && blockComingUp == true && configLine.matches(".*\\d.*")) {
 							
 							String[] blockNameSplit = configLine.split("=");
 							
@@ -93,7 +93,7 @@ public class ConfigHelper {
 							blockIDs.put(Integer.valueOf(configLine.substring(configLine.lastIndexOf("=") + 1)), blockAndConfig);
 							continue;
 							
-						} else if (configLine.contains("I:") && itemComingUp == true) {
+						} else if (configLine.contains("I:") && itemComingUp == true && configLine.matches(".*\\d.*")) {
 							
 							String[] itemNameSplit = configLine.split("=");
 							
@@ -180,7 +180,7 @@ public class ConfigHelper {
 									
 									itemComingUp = true;
 									
-								} else if (configLine.contains("I:") && blockComingUp == true) {
+								} else if (configLine.contains("I:") && blockComingUp == true && configLine.matches(".*\\d.*")) {
 									
 									String[] blockNameSplit = configLine.split("=");
 									
@@ -191,7 +191,7 @@ public class ConfigHelper {
 									blockIDs.put(Integer.valueOf(configLine.substring(configLine.lastIndexOf("=") + 1)), blockAndConfig);
 									continue;
 									
-								} else if (configLine.contains("I:") && itemComingUp == true) {
+								} else if (configLine.contains("I:") && itemComingUp == true && configLine.matches(".*\\d.*")) {
 									
 									String[] itemNameSplit = configLine.split("=");
 									
@@ -203,7 +203,7 @@ public class ConfigHelper {
 									continue;
 									
 									//& or &&?
-								} else if (configLine.contains("I:") & blockComingUp == false & itemComingUp == false) {
+								} else if (configLine.contains("I:") & configLine.matches(".*\\d.*") & blockComingUp == false & itemComingUp == false) {
 									
 									if (configLine.contains("block") || configLine.contains("Block") || configLine.contains("BLOCK") || configLine.contains("item") || configLine.contains("Item") || configLine.contains("ITEM")) {
 										
@@ -278,7 +278,7 @@ public class ConfigHelper {
 											
 											itemComingUp = true;
 											
-										} else if (configLine.contains("I:") && blockComingUp == true) {
+										} else if (configLine.contains("I:") && blockComingUp == true && configLine.matches(".*\\d.*")) {
 											
 											String[] blockNameSplit = configLine.split("=");
 											
@@ -289,7 +289,7 @@ public class ConfigHelper {
 											blockIDs.put(Integer.valueOf(configLine.substring(configLine.lastIndexOf("=") + 1)), blockAndConfig);
 											continue;
 											
-										} else if (configLine.contains("I:") && itemComingUp == true) {
+										} else if (configLine.contains("I:") && itemComingUp == true && configLine.matches(".*\\d.*")) {
 											
 											String[] itemNameSplit = configLine.split("=");
 											
@@ -301,7 +301,7 @@ public class ConfigHelper {
 											continue;
 											
 											//& or &&?
-										} else if (configLine.contains("I:") & blockComingUp == false & itemComingUp == false) {
+										} else if (configLine.contains("I:") & configLine.matches(".*\\d.*") & blockComingUp == false & itemComingUp == false) {
 											
 											if (configLine.contains("block") || configLine.contains("Block") || configLine.contains("BLOCK") || configLine.contains("item") || configLine.contains("Item") || configLine.contains("ITEM")) {
 												
