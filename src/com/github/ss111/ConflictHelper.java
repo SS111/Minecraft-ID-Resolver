@@ -155,24 +155,23 @@ public class ConflictHelper {
 			namesArray.add(combo.toArray()[0].toString());
 		}
 		
-		for (int i = 0; i <= names.size(); i++) {
+		for (int i = 0; i <= names.size() - 1; i++) {
 			
 			if (i == 0) {
 				
-				conflictString = conflictString + namesArray.toArray()[i] + " conflicts with ";
+				conflictString += namesArray.toArray()[i] + " conflicts with ";
 				
 			} else if (i == names.size() - 1) {
 				
-				conflictString = conflictString + namesArray.toArray()[i] + ", and ";
+				conflictString += namesArray.toArray()[i] + ".";
 				
-			} else if (i == names.size()) {
+			} else if (i == names.size() - 2) {
 				
-				conflictString = conflictString + namesArray.toArray()[i - 1] + ".";
-				
+				conflictString += namesArray.toArray()[i] + ", and ";
 				
 			} else {
-				
-				conflictString = conflictString + namesArray.toArray()[i] + ", ";
+		
+				conflictString += namesArray.toArray()[i] + ", ";
 			}
 		}
 		
@@ -206,20 +205,19 @@ public class ConflictHelper {
 			namesArray.add(combo.toArray()[1].toString());
 		}
 		
-		for (int i = 0; i <= names.size(); i++) {
+		for (int i = 0; i <= names.size() - 1; i++) {
 			
 			if (i == names.size() - 1) {
 				
-				conflictString = conflictString + namesArray.toArray()[i] + ", and ";
+				conflictString += namesArray.toArray()[i] + ".";
 				
-			} else if (i == names.size()) {
+			} else if (i == names.size() - 2) {
 				
-				conflictString = conflictString + namesArray.toArray()[i - 1];
-				
+				conflictString += namesArray.toArray()[i] + ", and ";
 				
 			} else {
 				
-				conflictString = conflictString + namesArray.toArray()[i] + ", ";
+				conflictString += namesArray.toArray()[i] + ", ";
 			}
 		}
 		
