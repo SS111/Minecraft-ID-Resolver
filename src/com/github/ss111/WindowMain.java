@@ -33,6 +33,8 @@ import com.martiansoftware.jsap.JSAP;
 import com.martiansoftware.jsap.JSAPException;
 import com.martiansoftware.jsap.JSAPResult;
 
+import java.util.prefs.Preferences;
+
 public class WindowMain {
 	
 	public static JFrame frmMain;
@@ -49,6 +51,8 @@ public class WindowMain {
 	private Integer conflicts = 0;
 	
 	private JTextField txtFieldPath2;
+	
+	private Preferences userPrefs = Preferences.userNodeForPackage(this.getClass());
 	
 	public static void main(String[] args) {
 		
@@ -304,7 +308,7 @@ public class WindowMain {
 	}
 
 	private void initialize() {
-		
+				
 		frmMain = new JFrame();
 		frmMain.setTitle("Minecraft ID Resolver V1.0.8 - By SS111");
 		frmMain.setBounds(100, 100, 450, 345);
@@ -320,8 +324,7 @@ public class WindowMain {
 		txtFieldPath.setColumns(10);
 		
 		frmMain.getContentPane().add(txtFieldPath, "cell 2 0,growx,aligny center");
-		
-		
+				
 		JLabel lblIdDump = new JLabel("NEI ID dump:");
 		
 		frmMain.getContentPane().add(lblIdDump, "cell 0 4,alignx left,aligny center");
@@ -403,6 +406,8 @@ public class WindowMain {
 				
 				if (returnValue == JFileChooser.APPROVE_OPTION) {
 					
+					userPrefs.put("CONFIG_DIR", dirChooser.getSelectedFile().getAbsolutePath());
+					
 					txtFieldPath.setText(dirChooser.getSelectedFile().getAbsolutePath());
 					
 					btnSearch.setEnabled(true);
@@ -416,6 +421,16 @@ public class WindowMain {
 		btnSearch.setEnabled(false);
 		
 		frmMain.getContentPane().add(btnSearch, "cell 0 1 5 1,growx,aligny top");
+		
+		String configDir = userPrefs.get("CONFIG_DIR", "null");
+		
+		if (configDir != "null") {
+			
+			txtFieldPath.setText(configDir);
+			
+			btnSearch.setEnabled(true);
+			btnSearch.requestFocus();
+		}
 		
 		btnSearch.addActionListener(new ActionListener() {
 			
