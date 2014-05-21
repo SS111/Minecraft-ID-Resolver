@@ -172,7 +172,7 @@ if (foo==bar) {
 
 #Using my code in your program
 
-If you want to use my code in your program, that's great! I do ask that you **please** give me credit. To start off, your going to need to add [Apache Commons Collections](http://commons.apache.org/proper/commons-collections/), and [Appache Commons IO](http://commons.apache.org/proper/commons-io/) to your build path. Then you can add [my developer jar](../master/dev/midr-1.0.8.jar) to your build path. From there, my "libraries" are pretty straightforward (most of the time...), but I've still included a (poorly written) Javadoc which is avliable [here](http://ss111.github.io/midr-doc/). In addition, below is a basic example of how to find and resolve ID conflicts.
+If you want to use my code in your program, that's great! I do ask that you **please** give me credit. To start off, your going to need to add [Apache Commons Collections](http://commons.apache.org/proper/commons-collections/), and [Appache Commons IO](http://commons.apache.org/proper/commons-io/) to your build path. Then you can add [my developer jar](../master/dev/midr-1.0.9.jar) to your build path. From there, my "libraries" are pretty straightforward (most of the time...), but I've still included a (poorly written) Javadoc which is avliable [here](http://ss111.github.io/midr-doc/). In addition, below is a basic example of how to find and resolve ID conflicts.
 
 You will first want to call:
 
