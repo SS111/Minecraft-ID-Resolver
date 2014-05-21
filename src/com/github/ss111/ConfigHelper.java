@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import org.apache.commons.collections.map.MultiValueMap;
+import org.apache.commons.io.FilenameUtils;
 
 /**
  * ConfigHelper is used to help with configuration files. It's main funtionality is the ability to parse Forge configuration files and store information about conflicting blocks/items.
@@ -43,7 +44,7 @@ public class ConfigHelper {
 		
 		for (File configFile : configFiles) {
 			
-			if (configFile.isFile() & configFile.getAbsolutePath().contains(".cfg") || configFile.getAbsolutePath().contains(".txt") || configFile.getAbsolutePath().contains(".conf")) {
+			if (configFile.isFile() & FilenameUtils.getExtension(configFile.getAbsolutePath()).equals("cfg") || FilenameUtils.getExtension(configFile.getAbsolutePath()).equals("txt") || FilenameUtils.getExtension(configFile.getAbsolutePath()).equals("conf")) {
 				
 				try {
 					
@@ -142,7 +143,7 @@ public class ConfigHelper {
 				
 				for (File configFile1 : configFilesDir1) {
 					
-					if (configFile1.isFile() & configFile1.getAbsolutePath().contains(".cfg") || configFile1.getAbsolutePath().contains(".txt") || configFile1.getAbsolutePath().contains(".conf")) {
+					if (configFile1.isFile() & FilenameUtils.getExtension(configFile1.getAbsolutePath()).equals("cfg") || FilenameUtils.getExtension(configFile1.getAbsolutePath()).equals("txt") || FilenameUtils.getExtension(configFile1.getAbsolutePath()).equals("conf")) {
 						
 						try {
 							
@@ -240,7 +241,7 @@ public class ConfigHelper {
 						
 						for (File configFile2 : configFilesDir2) {
 							
-							if (configFile2.isFile() & configFile2.getAbsolutePath().contains(".cfg") || configFile2.getAbsolutePath().contains(".txt") || configFile2.getAbsolutePath().contains(".conf")) {
+							if (configFile2.isFile() & FilenameUtils.getExtension(configFile2.getAbsolutePath()).equals("cfg") ||  FilenameUtils.getExtension(configFile2.getAbsolutePath()).equals("txt") ||  FilenameUtils.getExtension(configFile2.getAbsolutePath()).equals("conf")) {
 								
 								try {
 									
