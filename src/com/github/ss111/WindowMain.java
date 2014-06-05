@@ -22,6 +22,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 import net.miginfocom.swing.MigLayout;
@@ -308,6 +310,16 @@ public class WindowMain {
 	}
 
 	private void initialize() {
+		
+		try {
+			
+			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+			
+		} catch (ClassNotFoundException | InstantiationException
+				| IllegalAccessException | UnsupportedLookAndFeelException e1) {
+			
+			e1.printStackTrace();
+		}
 				
 		frmMain = new JFrame();
 		frmMain.setTitle("Minecraft ID Resolver V1.0.9 - By SS111");
