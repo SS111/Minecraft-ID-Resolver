@@ -70,7 +70,7 @@ However, if you want the bleeding edge build first clone the repository. Then yo
 
 Contributing is a great way to help me and the community out. Everything helps!
 
-##Dontaing 
+##Donating
 
 Donating is one way to express your thanks for the work I do in my free time. You can donate any amount [here](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=DBT788PS4EN8J).
 
