@@ -9,6 +9,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Iterator;
+import java.util.prefs.Preferences;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
@@ -20,11 +21,13 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.table.TableColumn;
 
 import net.miginfocom.swing.MigLayout;
 
@@ -34,8 +37,6 @@ import com.martiansoftware.jsap.FlaggedOption;
 import com.martiansoftware.jsap.JSAP;
 import com.martiansoftware.jsap.JSAPException;
 import com.martiansoftware.jsap.JSAPResult;
-
-import java.util.prefs.Preferences;
 
 public class WindowMain {
 	
@@ -56,6 +57,8 @@ public class WindowMain {
 	
 	private Preferences userPrefs = Preferences.userNodeForPackage(this.getClass());
 	
+	public static JTable extensionsTable;
+	
 	public static void main(String[] args) {
 		
 		if (args.length != 0) {
@@ -69,6 +72,9 @@ public class WindowMain {
 			FlaggedOption optionThree = new FlaggedOption("show conflicts").setStringParser(JSAP.BOOLEAN_PARSER).setRequired(false).setDefault("false").setShortFlag('s').setLongFlag("show");
 			optionThree.setHelp("Requests that conflicts be displayed before being resolved.");
 			
+			FlaggedOption optionFour = new FlaggedOption("extra extension").setList(true).setListSeparator(',').setStringParser(JSAP.STRING_PARSER).setRequired(false).setShortFlag('e').setLongFlag("extensions");
+			optionFour.setHelp("A list of extra file extensions that are associated with configuration files");
+			
 			JSAP argsParser = new JSAP();
 			
 			try {
@@ -76,6 +82,7 @@ public class WindowMain {
 				argsParser.registerParameter(optionOne);
 				argsParser.registerParameter(optionTwo);
 				argsParser.registerParameter(optionThree);
+				argsParser.registerParameter(optionFour);
 				
 			} catch (JSAPException e) {
 				
@@ -96,7 +103,7 @@ public class WindowMain {
 	            }
 				
 	            System.err.println("");
-				System.err.println("Usage: java -jar Minecraft.ID.Resolver.v1.0.7.jar ");
+				System.err.println("Usage: java -jar Minecraft.ID.Resolver.v1.0.9.jar ");
 				System.err.println("                " + argsParser.getUsage());
 				System.err.println("");
 				System.err.println(argsParser.getHelp());
@@ -114,6 +121,8 @@ public class WindowMain {
 			File idDump = argsResult.getFile("nei id dump");
 			
 			if (configDirectory.exists() == true && idDump.exists() == true) {
+				
+				TableRenderer.setExtraFileExtensions(argsResult.getStringArray("extensions"));
 				
 				System.out.print("done");
 				System.out.println("");
@@ -320,7 +329,21 @@ public class WindowMain {
 			
 			e1.printStackTrace();
 		}
-				
+		
+		extensionsTable = new JTable();
+		extensionsTable.setModel(TableRenderer.getTableModel());
+		TableColumn columnOne = extensionsTable.getColumnModel().getColumn(0);
+		columnOne.setCellRenderer(TableRenderer.getCellRenderer());
+		
+		String[] options = {"Ok"};
+		
+		JOptionPane.showOptionDialog(null, new Object[]{"Please choose the file extensions you would like to use", extensionsTable}, "Input", JOptionPane.NO_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
+		
+		if (extensionsTable.getCellEditor() != null) {
+			
+			extensionsTable.getCellEditor().stopCellEditing();
+		}
+		
 		frmMain = new JFrame();
 		frmMain.setTitle("Minecraft ID Resolver V1.0.9 - By SS111");
 		frmMain.setBounds(100, 100, 450, 345);

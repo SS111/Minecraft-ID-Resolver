@@ -23,6 +23,7 @@ public class ConfigHelper {
 	private static MultiValueMap unknownIDs = new MultiValueMap();
 	private static Boolean blockComingUp = false;
 	private static Boolean itemComingUp = false;
+	public static Boolean isCommandLine = false;
 	
 	/**
 	 * Populates 3 <a href="http://commons.apache.org/proper/commons-collections/apidocs/org/apache/commons/collections4/map/MultiValueMap.html">MultiValueMap</a>s with block/item information by parsing Forge configuration files. There will be a separate MultiValueMap for blocks, items, and unknown (IDs that may be block or items in an attempt to support non-supported configuration files).
@@ -44,7 +45,7 @@ public class ConfigHelper {
 		
 		for (File configFile : configFiles) {
 			
-			if (configFile.isFile() & FilenameUtils.getExtension(configFile.getAbsolutePath()).equals("cfg") || FilenameUtils.getExtension(configFile.getAbsolutePath()).equals("txt") || FilenameUtils.getExtension(configFile.getAbsolutePath()).equals("conf")) {
+			if (configFile.isFile() & FilenameUtils.getExtension(configFile.getAbsolutePath()).equals("cfg") || FilenameUtils.getExtension(configFile.getAbsolutePath()).equals("txt") || FilenameUtils.getExtension(configFile.getAbsolutePath()).equals("conf") || checkExtraFileExtensions(configFile, TableRenderer.getExtraFileExtensions())) {
 				
 				try {
 					
@@ -143,7 +144,7 @@ public class ConfigHelper {
 				
 				for (File configFile1 : configFilesDir1) {
 					
-					if (configFile1.isFile() & FilenameUtils.getExtension(configFile1.getAbsolutePath()).equals("cfg") || FilenameUtils.getExtension(configFile1.getAbsolutePath()).equals("txt") || FilenameUtils.getExtension(configFile1.getAbsolutePath()).equals("conf")) {
+					if (configFile1.isFile() & FilenameUtils.getExtension(configFile1.getAbsolutePath()).equals("cfg") || FilenameUtils.getExtension(configFile1.getAbsolutePath()).equals("txt") || FilenameUtils.getExtension(configFile1.getAbsolutePath()).equals("conf") || checkExtraFileExtensions(configFile1, TableRenderer.getExtraFileExtensions())) {
 						
 						try {
 							
@@ -241,7 +242,7 @@ public class ConfigHelper {
 						
 						for (File configFile2 : configFilesDir2) {
 							
-							if (configFile2.isFile() & FilenameUtils.getExtension(configFile2.getAbsolutePath()).equals("cfg") ||  FilenameUtils.getExtension(configFile2.getAbsolutePath()).equals("txt") ||  FilenameUtils.getExtension(configFile2.getAbsolutePath()).equals("conf")) {
+							if (configFile2.isFile() & FilenameUtils.getExtension(configFile2.getAbsolutePath()).equals("cfg") ||  FilenameUtils.getExtension(configFile2.getAbsolutePath()).equals("txt") ||  FilenameUtils.getExtension(configFile2.getAbsolutePath()).equals("conf") || checkExtraFileExtensions(configFile2, TableRenderer.getExtraFileExtensions())) {
 								
 								try {
 									
@@ -380,5 +381,18 @@ public class ConfigHelper {
 	public static MultiValueMap getUnknownIDs() {
 		
 		return unknownIDs;
+	}
+	
+	private static boolean checkExtraFileExtensions(File configFile, ArrayList<String> otherExtensions) {
+		
+		for (String s : otherExtensions) {
+			
+			if (FilenameUtils.getExtension(configFile.getAbsolutePath()).equals(s)) {
+				
+				return true;
+			}
+		}
+		
+		return false;
 	}
 }
