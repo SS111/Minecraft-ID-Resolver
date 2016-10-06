@@ -1,8 +1,7 @@
 #Minecraft ID Resolver - A modpack creators best friend!
-
 Welcome! I have created a tool which I believe both normal users and modpack creators will be able to utilize. It is written in Java and therefore will work on every OS and is designed to find and fix Minecraft ID conflicts.
 
-#Usage
+##Usage
 
 1. Select the configuration directory
 2. Search for conflicts
@@ -60,13 +59,13 @@ A basic example also goes as follows:
 java -jar Minecraft.ID.Resolver.v.1.0.5.jar -c C:\Users\Bob\AppData\Roaming\.minecraft\config\ -n C:\Users\Bob\AppData\Roaming\.minecraft\dump.txt
 ```
 
-#Building from source
+##Building from source
 
 If you just want a stable build, grab the latest version from the [releases page](https://github.com/SS111/Minecraft-ID-Resolver/releases).
 
 However, if you want the bleeding edge build first clone the repository. Then you are going to need to add [MiG Layout](http://www.miglayout.com/), [Apache Commons Collections](http://commons.apache.org/proper/commons-collections/), [Appache Commons IO](http://commons.apache.org/proper/commons-io/), and [JSAP](http://www.martiansoftware.com/jsap/) to the build path. Finally, make sure that the classpath is set to WindowMain and then compile.
 
-#Contributing
+##Contributing
 
 Contributing is a great way to help me and the community out. Everything helps!
 
@@ -107,7 +106,7 @@ not
 ```java
 public static void foo()
 {
-	return bar;
+    return bar;
 }
 ```
 
@@ -170,7 +169,7 @@ if (foo==bar) {
 
 * Just be smart and look at some of my code if you have a question
 
-#Using my code in your program
+##Using my code in your program
 
 If you want to use my code in your program, that's great! I do ask that you **please** give me credit. To start off, your going to need to add [Apache Commons Collections](http://commons.apache.org/proper/commons-collections/), and [Appache Commons IO](http://commons.apache.org/proper/commons-io/) to your build path. Then you can add [my developer jar](../master/dev/midr-1.0.9.jar) to your build path. From there, my "libraries" are pretty straightforward (most of the time...), but I've still included a (poorly written) Javadoc which is avliable [here](http://ss111.github.io/midr-doc/). In addition, below is a basic example of how to find and resolve ID conflicts.
 
@@ -239,7 +238,7 @@ Finally, to resolve the conflicts it's as easy as calling:
 ConflictResolver.resolveConflicts("/path/to/configuration/directory", IdDumpHelper.getUnusedBlockIDs(), IdDumpHelper.getUnusedItemIDs(), ConflictHelper.getConflictingBlocks(), ConflictHelper.getConflictingItems());
 ```
 
-#License
+##License
 
 This software is licensed under the [GNU General Public License v3](http://www.gnu.org/licenses/gpl-3.0.html).
 
